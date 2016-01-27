@@ -67,22 +67,17 @@ impApplication.controller("StandingsController",
 
 impApplication.controller("AddStandingController",
     function ($scope, $modal, $log) {
-
         $scope.showForm = function () {
-            $scope.message = "Show Form Button Clicked";
-            console.log($scope.message);
-
             var modalInstance = $modal.open({
-                templateUrl: 'views/modal-form.html',
+                templateUrl: 'views/createStanding.html',
                 controller: ModalInstanceCtrl,
                 scope: $scope,
                 resolve: {
-                    userForm: function () {
-                        return $scope.userForm;
+                    standingForm: function () {
+                        return $scope.standingForm;
                     }
                 }
             });
-
             modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
             }, function () {
@@ -91,16 +86,30 @@ impApplication.controller("AddStandingController",
         };
     });
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, userForm) {
+var ModalInstanceCtrl = function ($scope, $modalInstance, standingForm, addStandingFactory) {
     $scope.form = {};
-    $scope.submitForm = function () {
-        if ($scope.form.userForm.$valid) {
-            console.log('user form is in scope');
-            $modalInstance.close('closed');
-        } else {
-            console.log('userform is not in scope');
-        }
+    $scope.submitForm = function (standing) {
+        var newStanding = {
+            name: standing.name,
+            class: standing.class,
+            points: standing.points,
+            profile: standing.profile,
+            region: standing.region,
+            month: standing.month
+        };
+
+        addStandingFactory.add(newStanding)
+            .success(function (data) {
+                if (data == false) { //db will return false if success
+                    $modalInstance.close('closed');
+                }
+            })
+            .error(function (data) {
+                console.log(data);
+            });
+
     };
+
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
