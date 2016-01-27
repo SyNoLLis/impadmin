@@ -69,16 +69,10 @@ class ImperialController
             }
         }
         $stmt->execute();
-        $results = $stmt->get_result();
-        if ($results->num_rows != 0) {
-            while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-                $myArray[] = $row;
-            }
+        $stmt->bind_result($id, $name, $class, $points, $profile, $region);
+        while($stmt->fetch()) {
+            $myArray[] = array('id'=> $id, 'name' => $name, 'class' => $class, 'points' => $points, 'profile' => $profile, 'region' => $region);
         }
-        else {
-            return http_response_code(404);
-        }
-        $results->close();
         $stmt->close();
         self::$conn->close();
         return $myArray;
@@ -98,17 +92,14 @@ class ImperialController
             $stmt = self::$conn->prepare("SELECT * FROM ".$month."2016_standings s WHERE s.id = ?");
             $stmt->bind_param("d", $id);
             $stmt->execute();
-            $result = $stmt->get_result();
-        }
-        if ($result->num_rows != 0) {
-            $row = $result->fetch_array(MYSQLI_ASSOC);
-        }
-        else {
-            return http_response_code(404);
+            $stmt->bind_result($id, $name, $class, $points, $profile, $region);
+            while($stmt->fetch()) {
+                $result = array('id'=> $id, 'name' => $name, 'class' => $class, 'points' => $points, 'profile' => $profile, 'region' => $region);
+            }
         }
         $stmt->close();
         self::$conn->close();
-        return $row;
+        return $result;
     }
 
 
@@ -125,7 +116,6 @@ class ImperialController
             $stmt = self::$conn->prepare("INSERT INTO ".$data->month."2016_standings (id, name, class, points, profile, region) VALUES ('',?,?,?,?,?)");
             $stmt->bind_param("ssdss", $data->name, $data->class, $data->points, $data->profile, $data->region);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
@@ -145,7 +135,6 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET name=?,class=?,points=?,profile=?,region=? WHERE id =?");
             $stmt->bind_param("ssdssd", $data->name, $data->class, $data->points, $data->profile, $data->region, $data->id);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
@@ -165,7 +154,6 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET name=? WHERE id =?");
             $stmt->bind_param("sd", $data->name, $data->id);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
@@ -185,7 +173,6 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET class=? WHERE id =?");
             $stmt->bind_param("sd", $data->class, $data->id);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
@@ -205,7 +192,6 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET points=? WHERE id =?");
             $stmt->bind_param("dd", $data->points, $data->id);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
@@ -225,7 +211,6 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET profile=? WHERE id =?");
             $stmt->bind_param("sd", $data->profile, $data->id);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
@@ -245,7 +230,6 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET region=? WHERE id =?");
             $stmt->bind_param("sd", $data->region, $data->id);
             $stmt->execute();
-            $result = $stmt->get_result();
         }
         $stmt->close();
         self::$conn->close();
