@@ -1,4 +1,12 @@
+
+<div class="container" ng-controller="AddStandingController">
+    <div class="row">
+        <button ng-click="showForm()" class="btn btn-default">Add a new standing</button>
+    </div>
+</div>
+
 <div ng-controller="StandingsController">
+
     <div class="container">
         <div class="row">
             <form class="span4">
@@ -28,64 +36,64 @@
                 <input type="submit" class="btn btn-default loginBtn" ng-click="handleStandingsBtnClick(standings)" value="Show">
             </form>
         </div>
-        <button ng-click="toggleModal()" class="btn btn-default">Add a new standing</button>
+
     </div>
 
-
-
-    <modal title="Add a new standing" visible="showModal">
-        <form role="form" name="standingForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" ng-model="standing.name" placeholder="Player Name" />
-            </div>
-            <div class="form-group">
-                <label for="class">Class</label>
-                <select class="form-control" id="class" ng-model="standing.class">
-                    <option value="Assassin">Assassin</option>
-                    <option value="Blade Dancer">Blade Dancer</option>
-                    <option value="Blade Master">Blade Master</option>
-                    <option value="Destroyer">Destroyer</option>
-                    <option value="Force Master">Force Master</option>
-                    <option value="Kung Fu Master">Kung Fu Master</option>
-                    <option value="Summoner">Summoner</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="points">Points</label>
-                <input type="text" class="form-control" ng-model="standing.points" placeholder="Points" />
-            </div>
-            <div class="form-group">
-                <label for="profile">Profile</label>
-                <input type="text" class="form-control" ng-model="standing.profile" placeholder="Profile" />
-            </div>
-            <label for="region">Region:</label>
-
-            <select class="form-control" ng-model="standing.region">
-                <option value="na">North America</option>
-                <option value="eu">Europe</option>
+    <!--
+    <modal title="Add a new standing" visible="">
+    <form role="form" name="standingForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" ng-model="standing.name" placeholder="Player Name" />
+        </div>
+        <div class="form-group">
+            <label for="class">Class</label>
+            <select class="form-control" id="class" ng-model="standing.class">
+                <option value="Assassin">Assassin</option>
+                <option value="Blade Dancer">Blade Dancer</option>
+                <option value="Blade Master">Blade Master</option>
+                <option value="Destroyer">Destroyer</option>
+                <option value="Force Master">Force Master</option>
+                <option value="Kung Fu Master">Kung Fu Master</option>
+                <option value="Summoner">Summoner</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="points">Points</label>
+            <input type="text" class="form-control" ng-model="standing.points" placeholder="Points" />
+        </div>
+        <div class="form-group">
+            <label for="profile">Profile</label>
+            <input type="text" class="form-control" ng-model="standing.profile" placeholder="Profile" />
+        </div>
+        <label for="region">Region:</label>
 
-            <label for="month">Month:</label>
-            <select class="form-control" ng-model="standing.month">
-                <option value="january">January</option>
-                <option value="february">February</option>
-                <option value="march">March</option>
-                <option value="april">April</option>
-                <option value="may">May</option>
-                <option value="june">June</option>
-                <option value="july">July</option>
-                <option value="august">August</option>
-                <option value="september">September</option>
-                <option value="october">October</option>
-                <option value="november">November</option>
-                <option value="december">December</option>
-            </select>
+        <select class="form-control" ng-model="standing.region">
+            <option value="na">North America</option>
+            <option value="eu">Europe</option>
+        </select>
+
+        <label for="month">Month:</label>
+        <select class="form-control" ng-model="standing.month">
+            <option value="january">January</option>
+            <option value="february">February</option>
+            <option value="march">March</option>
+            <option value="april">April</option>
+            <option value="may">May</option>
+            <option value="june">June</option>
+            <option value="july">July</option>
+            <option value="august">August</option>
+            <option value="september">September</option>
+            <option value="october">October</option>
+            <option value="november">November</option>
+            <option value="december">December</option>
+        </select>
 
 
-            <button type="submit" class="btn btn-default" ng-click="handleAddStandingBtnClick(standing)">Submit</button>
-        </form>
-    </modal>
+        <button type="submit" class="btn btn-default" ng-click="handleAddStandingBtnClick(standing)">Submit</button>
+    </form>
+</modal>
+-->
 
     <div class="container">
         <table class="table table-hover table-bordered">
@@ -96,6 +104,7 @@
                 <th>Points</th>
                 <th>Profile</th>
                 <th>Region</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody ng-repeat="ranking in rankings">
@@ -105,8 +114,10 @@
                 <td>{{ranking.points}}</td>
                 <td>{{ranking.profile}}</td>
                 <td>{{ranking.region}}</td>
+                <td> <button ng-click="toggleModal()" class="btn btn-default">Add a new standing</button></td>
             </tr>
             </tbody>
         </table>
     </div>
+
 </div>

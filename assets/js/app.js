@@ -1,7 +1,7 @@
 "use strict";
 
 var impApplication = angular.module('impApplication', [
-    'ui.router', 'ngCookies'
+    'ui.router', 'ngCookies', 'ui.bootstrap'
 ]);
 impApplication
     .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -52,36 +52,60 @@ impApplication.controller("LoginController",
 impApplication.controller("StandingsController",
     function($scope, $http, addStandingFactory, standingsFactory, $cookies, $state, config) {
         $scope.handleStandingsBtnClick  = function (standings) {
-            var url = config.baseUrl + "/standings/"+standings.month+"/2016/"+standings.region;
+            var url = config.baseUrl + "/standings/"+standings.month+"/"+standings.region;
             $scope.month = standings.month;
             $scope.region = standings.region;
             standingsFactory.standings(url)
                 .success(function (data) {
                     $scope.rankings = data;
                 })
-                .error(function (data) {
-
+                .error(function () {
+                    $scope.standingsError = true;
                 });
-        };
-
-        $scope.handleAddStandingBtnClick = function (standing) {
-            var standing = {
-                name: standing.name,
-                class: standing.class,
-                points: standing.points,
-                profile: standing.profile,
-                month: standing.month,
-                region: standing.region
-            };
-            addStandingFactory.add(standing);
-        };
-        $scope.standing = {};
-        $scope.showModal = false;
-        $scope.toggleModal = function(){
-            $scope.showModal = !$scope.showModal;
         };
     });
 
+impApplication.controller("AddStandingController",
+    function ($scope, $modal, $log) {
+
+        $scope.showForm = function () {
+            $scope.message = "Show Form Button Clicked";
+            console.log($scope.message);
+
+            var modalInstance = $modal.open({
+                templateUrl: 'views/modal-form.html',
+                controller: ModalInstanceCtrl,
+                scope: $scope,
+                resolve: {
+                    userForm: function () {
+                        return $scope.userForm;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+    });
+
+var ModalInstanceCtrl = function ($scope, $modalInstance, userForm) {
+    $scope.form = {};
+    $scope.submitForm = function () {
+        if ($scope.form.userForm.$valid) {
+            console.log('user form is in scope');
+            $modalInstance.close('closed');
+        } else {
+            console.log('userform is not in scope');
+        }
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};
 
 impApplication.factory('loginFactory',
     function (config, $http) {
@@ -104,7 +128,7 @@ impApplication.factory('standingsFactory',
 
 impApplication.factory('addStandingFactory',
     function (config, $http) {
-        var url = config.baseUrl + "/standings/add";
+        var url = config.baseUrl + "/standing/add";
         return {
             add: function(params) {
                 return $http.post(url, params)

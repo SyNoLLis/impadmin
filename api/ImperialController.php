@@ -20,48 +20,6 @@ class ImperialController
     }
 
     /**
-     * Returns a JSON string object to the browser when hitting the root of the domain
-     *
-     *
-     * @url GET standings/$year
-     * @url GET standings/$month/$year
-     * @url GET standings/$year/$region
-     * @url GET standings/$month/$year/$region
-     */
-    public function region($region = null, $month = null, $year)
-    {
-        $myArray = array();
-        $stmt = "";
-        if (self::$conn) {
-            if (($month) && ($year) && ($region)) {
-                $stmt = self::$conn->prepare("SELECT * FROM ".$month.$year."_standings s WHERE s.region = ? ORDER BY s.points DESC");
-                $stmt->bind_param("s", $region);
-            }
-            if ((!$month) && ($year) && ($region)) {
-                $stmt = self::$conn->prepare("SELECT * FROM ".$year."_standings s WHERE s.region = ? ORDER BY s.points DESC");
-                $stmt->bind_param("s", $region);
-            }
-            if (($month) && ($year) && (!$region)) {
-                $stmt = self::$conn->prepare("SELECT * FROM ".$month.$year."_standings s ORDER BY s.points DESC");
-            }
-            if ((!$month) && ($year) && (!$region)) {
-                $stmt = self::$conn->prepare("SELECT * FROM ".$year."_standings s ORDER BY s.points DESC");
-            }
-        }
-        $stmt->execute();
-        $results = $stmt->get_result();
-        if ($results) {
-            while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-                $myArray[] = $row;
-            }
-        }
-        $results->close();
-        $stmt->close();
-        self::$conn->close();
-        return $myArray;
-    }
-
-    /**
      * Logs in a user with the given username and password POSTed. Though true
      * REST doesn't believe in sessions, it is often desirable for an AJAX server.
      *
@@ -69,7 +27,6 @@ class ImperialController
      */
     public function login($data)
     {
-        $row = "";
         $result = "";
         $stmt = "";
         $password = md5($data->password);
@@ -90,10 +47,75 @@ class ImperialController
         self::$conn->close();
         return $row;
     }
+
+
     /**
-     * Add in a new standing
+     * Get all standings with month or/and region
      *
-     * @url POST /standings/add
+     * @url GET standings/$month
+     * @url GET standings/$month/$region
+     */
+    public function region($month, $region = null)
+    {
+        $myArray = array();
+        $stmt = "";
+        if (self::$conn) {
+            if (($month) && (!$region)) {
+                $stmt = self::$conn->prepare("SELECT * FROM ".$month."2016_standings s ORDER BY s.points DESC");
+            }
+            if (($month) && ($region)) {
+                $stmt = self::$conn->prepare("SELECT * FROM ".$month."2016_standings s WHERE s.region = ? ORDER BY s.points DESC");
+                $stmt->bind_param("s", $region);
+            }
+        }
+        $stmt->execute();
+        $results = $stmt->get_result();
+        if ($results->num_rows != 0) {
+            while($row = $results->fetch_array(MYSQLI_ASSOC)) {
+                $myArray[] = $row;
+            }
+        }
+        else {
+            return http_response_code(404);
+        }
+        $results->close();
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+
+    /**
+     * Get a single standing with the month and its id
+     *
+     * @url GET /standing/$month/$id
+     */
+    public function getStanding($month, $id)
+    {
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT * FROM ".$month."2016_standings s WHERE s.id = ?");
+            $stmt->bind_param("d", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+        if ($result->num_rows != 0) {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+        }
+        else {
+            return http_response_code(404);
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $row;
+    }
+
+
+    /**
+     * Add a new standing
+     *
+     * @url POST /standing/add
      */
     public function addStanding($data)
     {
@@ -111,9 +133,9 @@ class ImperialController
     }
 
     /**
-     * Add in a new standing
+     * Edit a standing
      *
-     * @url POST /standings/edit
+     * @url POST /standing/edit
      */
     public function editStanding($data)
     {
