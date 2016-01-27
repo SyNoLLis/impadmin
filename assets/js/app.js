@@ -1,7 +1,7 @@
 "use strict";
 
 var impApplication = angular.module('impApplication', [
-    'ui.router', 'ngCookies', 'ui.bootstrap'
+    'ui.router', 'ngCookies', 'ui.bootstrap', 'xeditable'
 ]);
 impApplication
     .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -23,6 +23,10 @@ impApplication
     .constant("config", {
         "baseUrl": "http://localhost/impadmin/api"
     });
+
+impApplication.run(function(editableOptions) {
+    editableOptions.theme = 'bs3';
+});
 
 impApplication.controller("LoginController",
     function($scope, $http, loginFactory, $cookies, $state) {
@@ -51,6 +55,19 @@ impApplication.controller("LoginController",
 
 impApplication.controller("StandingsController",
     function($scope, $http, addStandingFactory, standingsFactory, $cookies, $state, config) {
+        $scope.classes = [
+            {value: 'Assassin', text: 'Assassin'},
+            {value: 'Blade Dancer', text: 'Blade Dancer'},
+            {value: 'Blade Master', text: 'Blade Master'},
+            {value: 'Destroyer', text: 'Destroyer'},
+            {value: 'Force Master', text: 'orce Master'},
+            {value: 'Kung Fu Master', text: 'Kung Fu Master'},
+            {value: 'Summoner', text: 'Summoner'}
+        ];
+        $scope.regions = [
+            {value: 'na', text: 'North America'},
+            {value: 'eu', text: 'Europe'}
+        ];
         $scope.handleStandingsBtnClick  = function (standings) {
             var url = config.baseUrl + "/standings/"+standings.month+"/"+standings.region;
             $scope.month = standings.month;
@@ -63,6 +80,32 @@ impApplication.controller("StandingsController",
                     $scope.standingsError = true;
                 });
         };
+
+        $scope.editStandingName = function (data, id) {
+            var info = {name: data, id: id, month: $scope.month};
+            var url = config.baseUrl + "/standing/editName";
+            $http.post(url, info);
+        };
+        $scope.editStandingClass = function (data, id) {
+            var info = {class: data, id: id, month: $scope.month};
+            var url = config.baseUrl + "/standing/editClass";
+            $http.post(url, info);
+        };
+        $scope.editStandingPoints = function (data, id) {
+            var info = {points: data, id: id, month: $scope.month};
+            var url = config.baseUrl + "/standing/editPoints";
+            $http.post(url, info);
+        };
+        $scope.editStandingProfile = function (data, id) {
+            var info = {profile: data, id: id, month: $scope.month};
+            var url = config.baseUrl + "/standing/editProfile";
+            $http.post(url, info);
+        };
+        $scope.editStandingRegion = function (data, id) {
+            var info = {region: data, id: id, month: $scope.month};
+            var url = config.baseUrl + "/standing/editRegion";
+            $http.post(url, info);
+        }
     });
 
 impApplication.controller("AddStandingController",
@@ -144,6 +187,7 @@ impApplication.factory('addStandingFactory',
             }
         }
     });
+
 
 impApplication.directive('modal', function () {
     return {

@@ -44,17 +44,16 @@
                 <th>Points</th>
                 <th>Profile</th>
                 <th>Region</th>
-                <th>Action</th>
             </tr>
             </thead>
+
             <tbody ng-repeat="ranking in rankings">
             <tr>
-                <td>{{ranking.name}}</td>
-                <td>{{ranking.class}}</td>
-                <td>{{ranking.points}}</td>
-                <td>{{ranking.profile}}</td>
-                <td>{{ranking.region}}</td>
-                <td><button ng-click="toggleModal()" class="btn btn-default">Add a new standing</button></td>
+                <td><span editable-text="ranking.name" onbeforesave="editStandingName($data, ranking.id)">{{ranking.name}}</span></td>
+                <td><span editable-select="ranking.class" e-ng-options="c.value as c.text for c in classes" onbeforesave="editStandingClass($data, ranking.id)">{{ranking.class}}</span></td>
+                <td><span editable-text="ranking.points" onbeforesave="editStandingPoints($data, ranking.id)">{{ranking.points}}</span></td>
+                <td><span editable-text="ranking.profile" onbeforesave="editStandingProfile($data, ranking.id)">{{ranking.profile}}</span></td>
+                <td><span editable-select="ranking.region" e-ng-options="r.value as r.text for r in regions" onbeforesave="editStandingRegion($data, ranking.id)">{{ranking.region}}</span></td>
             </tr>
             </tbody>
         </table>

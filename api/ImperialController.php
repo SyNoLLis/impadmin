@@ -152,6 +152,105 @@ class ImperialController
         return $result;
     }
 
+    /**
+     * Edit a standing name
+     *
+     * @url POST /standing/editName
+     */
+    public function editStandingName($data)
+    {
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET name=? WHERE id =?");
+            $stmt->bind_param("sd", $data->name, $data->id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $result;
+    }
+
+    /**
+     * Edit a standing class
+     *
+     * @url POST /standing/editClass
+     */
+    public function editStandingClass($data)
+    {
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET class=? WHERE id =?");
+            $stmt->bind_param("sd", $data->class, $data->id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $result;
+    }
+
+    /**
+     * Edit a standing points
+     *
+     * @url POST /standing/editPoints
+     */
+    public function editStandingPoints($data)
+    {
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET points=? WHERE id =?");
+            $stmt->bind_param("dd", $data->points, $data->id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $result;
+    }
+
+    /**
+     * Edit a standing profile
+     *
+     * @url POST /standing/editProfile
+     */
+    public function editStandingProfile($data)
+    {
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET profile=? WHERE id =?");
+            $stmt->bind_param("sd", $data->profile, $data->id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $result;
+    }
+
+    /**
+     * Edit a standing region
+     *
+     * @url POST /standing/editRegion
+     */
+    public function editStandingRegion($data)
+    {
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET region=? WHERE id =?");
+            $stmt->bind_param("sd", $data->region, $data->id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $result;
+    }
 
     /**
      * Throws an error
