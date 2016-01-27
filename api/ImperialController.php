@@ -90,7 +90,6 @@ class ImperialController
         self::$conn->close();
         return $row;
     }
-
     /**
      * Add in a new standing
      *
