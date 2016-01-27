@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="impApplication">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosque Numérique du ProPress Conseil</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,600,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+
+<body>
+<header id="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="logo">
+                        <h1><a href="#/"><span>Imperial Network Admin Panel</span></a></h1>
+                    </div>
+                </div>
+                <div class="span8">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Where it's all happenning -->
+<div class="container">
+    <div ui-view style="margin-top: 50px; margin-bottom: 25px; text-align: center"></div>
+    <div ui-view="headSlider"></div>
+    <div ui-view="publications"></div>
+</div>
+
+
+
+<script src="assets/js/libs/jquery/jquery.min.js"></script>
+<script src="assets/js/libs/jquery/jquery-ui.js"></script>
+<script src="assets/js/libs/bootstrap.min.js"></script>
+
+
+
+<script src="assets/js/libs/angular/angular.min.js"></script>
+<script src="assets/js/libs/angular/angular-cookies.js"></script>
+<script src="assets/js/libs/angular/angular-ui-router.min.js"></script>
+<script src="assets/js/libs/angular/angular-css.min.js"></script>
+<script src="assets/js/libs/angular/angular-translate.min.js"></script>
+<script src="assets/js/libs/angular/angular-translate-loader-url.min.js"></script>
+<script src="assets/js/libs/angular/angular-translate-loader-static-files.min.js"></script>
+<script src="assets/js/libs/angular/angular-jwt.min.js"></script>
+
+<script src="assets/js/app.js"></script>
+</body>
+
+</html>

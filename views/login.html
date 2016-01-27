@@ -1,0 +1,31 @@
+<div ng-controller="LoginController">
+    <img src="assets/images/logo.png" alt="">
+
+    <div ng-switch="loginError" class="containerErrorLogin">
+        <div ng-switch-when="true">
+            <div class="alert alert-danger col-sm-5" role="alert" style="margin: auto;float: none">
+                Login or Password incorrect
+            </div>
+        </div>
+    </div>
+
+    <section id="form" >
+        <div class="container">
+            <div class="row">
+                <div class="login-form">
+                    <h2>Login before proceeding further</h2>
+                    <form>
+                        <input type="email" tabindex="1" autofocus required ng-model="user.email"
+                               name="userEmail" placeholder="Email"/>
+
+                        <input type="password" tabindex="2" required pattern=".{6,25}" maxlength="25"
+                               ng-model="user.password" name="userPassword" placeholder="Password" />
+
+                        <input type="submit" class="btn btn-default loginBtn" ng-click="handleLoginBtnClick(user)" value="Login">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

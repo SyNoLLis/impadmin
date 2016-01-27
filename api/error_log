@@ -1,0 +1,2 @@
+[15-Jan-2016 10:09:58 America/Chicago] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/impbnsco/public_html/admin/api/ImperialController.php on line 15
+[15-Jan-2016 10:09:58 America/Chicago] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home1/impbnsco/public_html/admin/api/ImperialController.php on line 22
