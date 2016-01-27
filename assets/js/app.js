@@ -21,7 +21,7 @@ impApplication
             });
     })
     .constant("config", {
-        "baseUrl": "http://localhost/satellitesinspace.github.io/admin/api"
+        "baseUrl": "http://localhost/impadmin/api"
     });
 
 impApplication.controller("LoginController",
@@ -44,7 +44,7 @@ impApplication.controller("LoginController",
                     }
                 })
                 .error(function () {
-                    $scope.loginError = "Login or Password incorrect";
+                    $scope.loginError = true;
                 });
         }
     });

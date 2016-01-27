@@ -4,6 +4,21 @@ use \Jacwright\RestServer\RestException;
 
 class ImperialController
 {
+    const HOST = "localhost";
+    const USER = "impbnsco_admin";
+    const PWD = "3egR0HTB0QCvaqE";
+    const DB = "impbnsco_admin";
+    private static $conn;
+
+    public function __construct()
+    {
+        self::$conn = new mysqli(self::HOST, self::USER, self::PWD, self::DB);
+    }
+
+    public function __destruct() {
+        self::$conn = null;
+    }
+
     /**
      * Returns a JSON string object to the browser when hitting the root of the domain
      *
@@ -15,31 +30,34 @@ class ImperialController
      */
     public function region($region = null, $month = null, $year)
     {
-        $conn = new mysqli('localhost', 'impbnsco_admin', '1992Thgink', 'impbnsco_admin');
-        $results = "";
         $myArray = array();
-        if ($conn) {
+        $stmt = "";
+        if (self::$conn) {
             if (($month) && ($year) && ($region)) {
-                $results = mysqli_query($conn, "SELECT * FROM ".$month.$year."_standings s WHERE s.region = '$region' ORDER BY s.points DESC ");
+                $stmt = self::$conn->prepare("SELECT * FROM ".$month.$year."_standings s WHERE s.region = ? ORDER BY s.points DESC");
+                $stmt->bind_param("s", $region);
             }
             if ((!$month) && ($year) && ($region)) {
-                $results = mysqli_query($conn, "SELECT * FROM ".$year."_standings s WHERE s.region = '$region' ORDER BY s.points DESC ");
-
+                $stmt = self::$conn->prepare("SELECT * FROM ".$year."_standings s WHERE s.region = ? ORDER BY s.points DESC");
+                $stmt->bind_param("s", $region);
             }
             if (($month) && ($year) && (!$region)) {
-                $results = mysqli_query($conn, "SELECT * FROM ".$month.$year."_standings s ORDER BY s.points DESC ");
+                $stmt = self::$conn->prepare("SELECT * FROM ".$month.$year."_standings s ORDER BY s.points DESC");
             }
             if ((!$month) && ($year) && (!$region)) {
-                $results = mysqli_query($conn, "SELECT * FROM ".$year."_standings s ORDER BY s.points DESC ");
+                $stmt = self::$conn->prepare("SELECT * FROM ".$year."_standings s ORDER BY s.points DESC");
             }
         }
+        $stmt->execute();
+        $results = $stmt->get_result();
         if ($results) {
             while($row = $results->fetch_array(MYSQLI_ASSOC)) {
                 $myArray[] = $row;
             }
         }
         $results->close();
-        $conn->close();
+        $stmt->close();
+        self::$conn->close();
         return $myArray;
     }
 
@@ -51,18 +69,25 @@ class ImperialController
      */
     public function login($data)
     {
-        $email = $data->email;
-        $password = md5($data->password);
-        $conn = new mysqli('localhost', 'impbnsco_admin' , '1992Thgink', 'impbnsco_admin');
+        $row = "";
         $result = "";
-        if ($conn) {
-            $result = mysqli_query($conn, "SELECT * FROM users u WHERE u.email = '$email' and u.password = '$password'");
+        $stmt = "";
+        $password = md5($data->password);
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT * FROM users u WHERE u.email = ? and u.password = ?");
+            $stmt->bind_param("ss", $data->email, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
         }
-        if ($result) {
+        if ($result->num_rows != 0) {
             $row = $result->fetch_array(MYSQLI_ASSOC);
         }
+        else {
+            return http_response_code(401);
+        }
         $result->close();
-        $conn->close();
+        $stmt->close();
+        self::$conn->close();
         return $row;
     }
 
@@ -73,19 +98,17 @@ class ImperialController
      */
     public function addStanding($data)
     {
-        $conn = new mysqli('localhost', 'impbnsco_admin' , '1992Thgink', 'impbnsco_admin');
-        $month = $data->month;
-        $region = $data->region;
-        $name = $data->name;
-        $class = $data->class;
-        $profile = $data->profile;
-        $points = $data->points;
-
-        if ($conn) {
-            $conn->query("INSERT INTO ".$month."2016_standings(id, name, class, points, profile, region)
-            VALUES ('','$name','$class','$points','$profile','$region')");
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("INSERT INTO ".$data->month."2016_standings (id, name, class, points, profile, region) VALUES ('',?,?,?,?,?)");
+            $stmt->bind_param("ssdss", $data->name, $data->class, $data->points, $data->profile, $data->region);
+            $stmt->execute();
+            $result = $stmt->get_result();
         }
-        $conn->close();
+        $stmt->close();
+        self::$conn->close();
+        return $result;
     }
 
     /**
@@ -95,21 +118,17 @@ class ImperialController
      */
     public function editStanding($data)
     {
-        $conn = new mysqli('localhost', 'impbnsco_admin' , '1992Thgink', 'impbnsco_admin');
-        $month = $data->month;
-        $region = $data->region;
-        $name = $data->name;
-        $class = $data->class;
-        $profile = $data->profile;
-        $points = $data->points;
-        $id = $data->id;
-
-        if ($conn) {
-            $conn->query("UPDATE ".$month."2016_standings SET name='$name',
-                          class='$class',points='$points',profile='$profile',
-                          region='$region' WHERE id = '$id'");
+        $stmt = "";
+        $result = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE ".$data->month."2016_standings SET name=?,class=?,points=?,profile=?,region=? WHERE id =?");
+            $stmt->bind_param("ssdssd", $data->name, $data->class, $data->points, $data->profile, $data->region, $data->id);
+            $stmt->execute();
+            $result = $stmt->get_result();
         }
-        $conn->close();
+        $stmt->close();
+        self::$conn->close();
+        return $result;
     }
 
 
