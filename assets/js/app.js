@@ -247,17 +247,15 @@ impApplication.controller("AddUserGuideController",
 
 var ModalGuideCtrl = function ($scope, $rootScope, $modalInstance, guideForm, config, addGuideFactory) {
     $scope.form = {};
-    $scope.submitForm = function (standing) {
-        var newStanding = {
-            name: standing.name,
-            class: standing.class,
-            points: standing.points,
-            profile: standing.profile,
-            region: standing.region,
-            month: standing.month
+    $scope.submitForm = function (guide) {
+        var newGuide = {
+            title: guide.name,
+            description: guide.class,
+            video: guide.points,
+            iframe: guide.profile
         };
 
-        addGuideFactory.add(newStanding)
+        addGuideFactory.add(newGuide)
             .success(function (data) {
                 if (data == "") { //will return nothing if success
                     $modalInstance.close('closed');
