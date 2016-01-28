@@ -1,0 +1,43 @@
+<div ng-controller="UserInfosController">
+    <br>
+    Welcome <span style="font-weight: 900;">{{user.username}}</span>
+    <br><br>
+    <div style="text-align: left">
+        <table class="table table-striped">
+            <tr>
+                <td style="text-align: right">Mention</td>
+                <td><span editable-text="userInfos.mention" onbeforesave="editUserMention($data, user.id)">{{userInfos.mention}}</span></td>
+            </tr>
+            <tr>
+
+                <td style="text-align: right">Intro video or stream</td>
+                <td><span editable-text="userInfos.introvid" onbeforesave="editUserIntrovid($data, user.id)">{{userInfos.introvid}}</span></td>
+            </tr>
+
+            <tr>
+                <td style="text-align: right">Description</td>
+                <td><span editable-text="userInfos.description" onbeforesave="editUserDescription($data, user.id)">{{userInfos.description}}</span></td>
+            </tr>
+
+            <tr>
+                <td style="text-align: right">Facebook link</td>
+                <td><span editable-text="userInfos.facebook" onbeforesave="editUserFacebook($data, user.id)">{{userInfos.facebook}}</span></td>
+            </tr>
+
+            <tr>
+                <td style="text-align: right">Twitter link</td>
+                <td><span editable-text="userInfos.twitter" onbeforesave="editUserTwitter($data, user.id)">{{userInfos.twitter}}</span></td>
+            </tr>
+
+            <tr>
+                <td style="text-align: right">Youtube link</td>
+                <td><span editable-text="userInfos.youtube" onbeforesave="editUserYoutube($data, user.id)">{{userInfos.youtube}}</span></td>
+            </tr>
+
+            <tr>
+                <td style="text-align: right">Google+ link</td>
+                <td><span editable-text="userInfos.googleplus" onbeforesave="editUserGoogleplus($data, user.id)">{{userInfos.googleplus }}</span></td>
+            </tr>
+        </table>
+    </div>
+</div>

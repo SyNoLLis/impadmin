@@ -1,6 +1,6 @@
 <div class="container" ng-controller="AddStandingController">
     <div class="row">
-        <button ng-click="showForm()" class="btn btn-default">Add a new standing</button>
+        <button ng-if="user.status == 'admin'" ng-click="showForm()" class="btn btn-default">Add a new standing</button>
     </div>
 </div>
 
@@ -35,6 +35,7 @@
             </form>
         </div>
     </div>
+
     <div class="container">
         <table class="table table-hover table-bordered">
             <thead>
@@ -44,16 +45,35 @@
                 <th>Points</th>
                 <th>Profile</th>
                 <th>Region</th>
+                <th ng-if="user.status == 'admin'">Delete</th>
             </tr>
             </thead>
 
             <tbody ng-repeat="ranking in rankings">
             <tr>
-                <td><span editable-text="ranking.name" onbeforesave="editStandingName($data, ranking.id)">{{ranking.name}}</span></td>
-                <td><span editable-select="ranking.class" e-ng-options="c.value as c.text for c in classes" onbeforesave="editStandingClass($data, ranking.id)">{{ranking.class}}</span></td>
-                <td><span editable-text="ranking.points" onbeforesave="editStandingPoints($data, ranking.id)">{{ranking.points}}</span></td>
-                <td><span editable-text="ranking.profile" onbeforesave="editStandingProfile($data, ranking.id)">{{ranking.profile}}</span></td>
-                <td><span editable-select="ranking.region" e-ng-options="r.value as r.text for r in regions" onbeforesave="editStandingRegion($data, ranking.id)">{{ranking.region}}</span></td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{ranking.name}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="ranking.name" onbeforesave="editStandingName($data, ranking.id)">{{ranking.name}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{ranking.class}}</span>
+                    <span ng-if="user.status == 'admin'" editable-select="ranking.class" e-ng-options="c.value as c.text for c in classes" onbeforesave="editStandingClass($data, ranking.id)">{{ranking.class}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{ranking.points}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="ranking.points" onbeforesave="editStandingPoints($data, ranking.id)">{{ranking.points}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{ranking.profile}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="ranking.profile" onbeforesave="editStandingProfile($data, ranking.id)">{{ranking.profile}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{ranking.region}}</span>
+                    <span ng-if="user.status == 'admin'" editable-select="ranking.region" e-ng-options="r.value as r.text for r in regions" onbeforesave="editStandingRegion($data, ranking.id)">{{ranking.region}}</span>
+                </td>
+                <td>
+                    <button ng-if="user.status == 'admin'" ng-click="deleteStanding(ranking)" class="btn btn-danger">Delete</button>
+                </td>
             </tr>
             </tbody>
         </table>

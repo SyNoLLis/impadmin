@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h3>Create A New Guide</h3>
+</div>
+<form name="form.guideForm" ng-submit="submitForm(guide)" novalidate>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" ng-model="guide.title"  required>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="3" ng-model="guide.description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Video</label>
+            <textarea class="form-control" rows="3" ng-model="guide.video"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Iframe</label>
+            <textarea class="form-control" rows="3" ng-model="guide.iframe"></textarea>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-disabled="form.guide.$invalid">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

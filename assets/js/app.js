@@ -18,6 +18,14 @@ impApplication
             .state('nav.standings', {
                 url: '/standings',
                 templateUrl: 'views/standings.html'
+            })
+            .state('nav.infos', {
+                url: '/infos',
+                templateUrl: 'views/userInfos.html'
+            })
+            .state('nav.guides', {
+                url: '/guides',
+                templateUrl: 'views/userGuides.html'
             });
     })
     .constant("config", {
@@ -29,7 +37,7 @@ impApplication.run(function(editableOptions) {
 });
 
 impApplication.controller("LoginController",
-    function($scope, $http, loginFactory, $cookies, $state) {
+    function($scope, $http, loginFactory, $cookies, $state, $rootScope) {
         $scope.handleLoginBtnClick  = function (user) {
             var credentials = {
                 email: user.email,
@@ -38,9 +46,7 @@ impApplication.controller("LoginController",
             loginFactory.login(credentials)
                 .success(function (data) {
                     if (data) {
-                        $cookies.put("id", data.id);
-                        $cookies.put("username", data.username);
-                        $cookies.put("status", data.status);
+                        $rootScope.user = data;
                         $state.transitionTo("nav");
                     }
                     else {
@@ -54,7 +60,7 @@ impApplication.controller("LoginController",
     });
 
 impApplication.controller("StandingsController",
-    function($scope, $http, addStandingFactory, standingsFactory, $cookies, $state, config) {
+    function($scope, $rootScope, $http, addStandingFactory, deleteStandingFactory, standingsFactory, $cookies, $state, config, $window) {
         $scope.classes = [
             {value: 'Assassin', text: 'Assassin'},
             {value: 'Blade Dancer', text: 'Blade Dancer'},
@@ -74,37 +80,52 @@ impApplication.controller("StandingsController",
             $scope.region = standings.region;
             standingsFactory.standings(url)
                 .success(function (data) {
-                    $scope.rankings = data;
+                    $rootScope.rankings = data;
                 })
-                .error(function () {
-                    $scope.standingsError = true;
+                .error(function (data) {
+                    $rootScope.rankings = data;
                 });
         };
-
-        $scope.editStandingName = function (data, id) {
-            var info = {name: data, id: id, month: $scope.month};
-            var url = config.baseUrl + "/standing/editName";
-            $http.post(url, info);
-        };
-        $scope.editStandingClass = function (data, id) {
-            var info = {class: data, id: id, month: $scope.month};
-            var url = config.baseUrl + "/standing/editClass";
-            $http.post(url, info);
-        };
-        $scope.editStandingPoints = function (data, id) {
-            var info = {points: data, id: id, month: $scope.month};
-            var url = config.baseUrl + "/standing/editPoints";
-            $http.post(url, info);
-        };
-        $scope.editStandingProfile = function (data, id) {
-            var info = {profile: data, id: id, month: $scope.month};
-            var url = config.baseUrl + "/standing/editProfile";
-            $http.post(url, info);
-        };
-        $scope.editStandingRegion = function (data, id) {
-            var info = {region: data, id: id, month: $scope.month};
-            var url = config.baseUrl + "/standing/editRegion";
-            $http.post(url, info);
+        if ($rootScope.user.status == 'admin') {
+            $scope.deleteStanding = function (standing) {
+                var info = {id: standing.id, name: standing.name, month: $scope.month};
+                if ($window.confirm("Do you really want to delete "+standing.name) == true) {
+                    deleteStandingFactory.delete(info);
+                    var url = config.baseUrl + "/standings/"+$scope.month+"/"+$scope.region;
+                    standingsFactory.standings(url)
+                        .success(function (data) {
+                            $rootScope.rankings = data;
+                        })
+                        .error(function (data) {
+                            $rootScope.rankings = data;
+                        });
+                }
+            };
+            $scope.editStandingName = function (data, id) {
+                var info = {name: data, id: id, month: $scope.month};
+                var url = config.baseUrl + "/standing/editName";
+                $http.post(url, info);
+            };
+            $scope.editStandingClass = function (data, id) {
+                var info = {class: data, id: id, month: $scope.month};
+                var url = config.baseUrl + "/standing/editClass";
+                $http.post(url, info);
+            };
+            $scope.editStandingPoints = function (data, id) {
+                var info = {points: data, id: id, month: $scope.month};
+                var url = config.baseUrl + "/standing/editPoints";
+                $http.post(url, info);
+            };
+            $scope.editStandingProfile = function (data, id) {
+                var info = {profile: data, id: id, month: $scope.month};
+                var url = config.baseUrl + "/standing/editProfile";
+                $http.post(url, info);
+            };
+            $scope.editStandingRegion = function (data, id) {
+                var info = {region: data, id: id, month: $scope.month};
+                var url = config.baseUrl + "/standing/editRegion";
+                $http.post(url, info);
+            }
         }
     });
 
@@ -129,7 +150,133 @@ impApplication.controller("AddStandingController",
         };
     });
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, standingForm, addStandingFactory) {
+
+impApplication.controller("UserInfosController",
+    function($scope, $rootScope, $http, config) {
+        var url = config.baseUrl+"/userInfo/"+$rootScope.user.id;
+        $http.get(url).then(function (data) {
+            $scope.userInfos = data.data;
+        });
+        $scope.editUserDescription = function (data, id) {
+            var info = {description: data, id: id};
+            var url = config.baseUrl + "/user/editDescription";
+            $http.post(url, info);
+        };
+        $scope.editUserFacebook = function (data, id) {
+            var info = {facebook: data, id: id};
+            var url = config.baseUrl + "/user/editFacebook";
+            $http.post(url, info);
+        };
+        $scope.editUserGoogleplus = function (data, id) {
+            var info = {googleplus: data, id: id};
+            var url = config.baseUrl + "/user/editGoogleplus";
+            $http.post(url, info);
+        };
+        $scope.editUserIntrovid = function (data, id) {
+            var info = {introvid: data, id: id};
+            var url = config.baseUrl + "/user/editIntrovid";
+            $http.post(url, info);
+        };
+        $scope.editUserMention = function (data, id) {
+            var info = {mention: data, id: id};
+            var url = config.baseUrl + "/user/editMention";
+            $http.post(url, info);
+        };
+        $scope.editUserTwitter = function (data, id) {
+            var info = {twitter: data, id: id};
+            var url = config.baseUrl + "/user/editTwitter";
+            $http.post(url, info);
+        };
+        $scope.editUserYoutube = function (data, id) {
+            var info = {youtube: data, id: id};
+            var url = config.baseUrl + "/user/editYoutube";
+            $http.post(url, info);
+        };
+    });
+
+
+impApplication.controller("UserGuidesController",
+    function ($scope, $rootScope, $http, config) {
+        var url = config.baseUrl+"/user/guides/"+$rootScope.user.id;
+        $http.get(url).then(function (data) {
+            $scope.guides = data.data;
+        });
+        $scope.editGuideTitle= function (data, id) {
+            var info = {title: data, id: id};
+            var url = config.baseUrl + "/user/guide/editTitle";
+            $http.post(url, info);
+        };
+        $scope.editGuideDescription = function (data, id) {
+            var info = {description: data, id: id};
+            var url = config.baseUrl + "/user/guide/editDescription";
+            $http.post(url, info);
+        };
+        $scope.editGuideVideo = function (data, id) {
+            var info = {video: data, id: id};
+            var url = config.baseUrl + "/user/guide/editVideo";
+            $http.post(url, info);
+        };
+        $scope.editGuideIframe = function (data, id) {
+            var info = {iframe: data, id: id};
+            var url = config.baseUrl + "/user/guide/editIframe";
+            $http.post(url, info);
+        };
+    });
+
+
+impApplication.controller("AddUserGuideController",
+    function ($scope, $modal, $log) {
+        $scope.showForm = function () {
+            var modalInstance = $modal.open({
+                templateUrl: 'views/createGuide.html',
+                controller: ModalGuideCtrl,
+                scope: $scope,
+                resolve: {
+                    guideForm: function () {
+                        return $scope.guideForm;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+    });
+
+var ModalGuideCtrl = function ($scope, $rootScope, $modalInstance, guideForm, config, addGuideFactory) {
+    $scope.form = {};
+    $scope.submitForm = function (standing) {
+        var newStanding = {
+            name: standing.name,
+            class: standing.class,
+            points: standing.points,
+            profile: standing.profile,
+            region: standing.region,
+            month: standing.month
+        };
+
+        addGuideFactory.add(newStanding)
+            .success(function (data) {
+                if (data == "") { //will return nothing if success
+                    $modalInstance.close('closed');
+                }
+            })
+            .error(function (data) {
+                console.log(data);
+            });
+
+    };
+
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};
+
+
+var ModalInstanceCtrl = function ($scope, $rootScope, $modalInstance, standingForm, addStandingFactory, standingsFactory, config) {
     $scope.form = {};
     $scope.submitForm = function (standing) {
         var newStanding = {
@@ -143,8 +290,13 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, standingForm, addStand
 
         addStandingFactory.add(newStanding)
             .success(function (data) {
-                if (data == false) { //db will return false if success
+                if (data == "") { //will return nothing if success
                     $modalInstance.close('closed');
+                    var url = config.baseUrl + "/standings/"+standing.month+"/"+standing.region;
+                    standingsFactory.standings(url)
+                        .success(function (data) {
+                            $rootScope.rankings = data;
+                        });
                 }
             })
             .error(function (data) {
@@ -188,6 +340,25 @@ impApplication.factory('addStandingFactory',
         }
     });
 
+impApplication.factory('addGuideFactory',
+    function (config, $http) {
+        var url = config.baseUrl + "/user/guide/add";
+        return {
+            add: function(params) {
+                return $http.post(url, params)
+            }
+        }
+    });
+
+impApplication.factory('deleteStandingFactory',
+    function (config, $http) {
+        var url = config.baseUrl + "/standing/delete";
+        return {
+            delete: function(params) {
+                return $http.post(url, params)
+            }
+        }
+    });
 
 impApplication.directive('modal', function () {
     return {
