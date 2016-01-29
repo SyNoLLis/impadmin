@@ -89,7 +89,7 @@ impApplication.controller("StandingsController",
         if ($rootScope.user.status == 'admin') {
             $scope.deleteStanding = function (standing) {
                 var info = {id: standing.id, name: standing.name, month: $scope.month};
-                if ($window.confirm("Do you really want to delete "+standing.name) == true) {
+                if ($window.confirm("Do you really want to delete "+standing.name +" \n Please note that this action is not reversible !") == true) {
                     deleteStandingFactory.delete(info);
                     var url = config.baseUrl + "/standings/"+$scope.month+"/"+$scope.region;
                     standingsFactory.standings(url)
@@ -196,11 +196,25 @@ impApplication.controller("UserInfosController",
 
 
 impApplication.controller("UserGuidesController",
-    function ($scope, $rootScope, $http, config) {
+    function ($scope, $rootScope, $http, config, $window) {
+        $scope.classes = [
+            {value: 'Assassin', text: 'Assassin'},
+            {value: 'Blade Dancer', text: 'Blade Dancer'},
+            {value: 'Blade Master', text: 'Blade Master'},
+            {value: 'Destroyer', text: 'Destroyer'},
+            {value: 'Force Master', text: 'orce Master'},
+            {value: 'Kung Fu Master', text: 'Kung Fu Master'},
+            {value: 'Summoner', text: 'Summoner'}
+        ];
         var url = config.baseUrl+"/user/guides/"+$rootScope.user.id;
         $http.get(url).then(function (data) {
-            $scope.guides = data.data;
+            $rootScope.guides = data.data;
         });
+        $scope.editGuideClass= function (data, id) {
+            var info = {class: data, id: id};
+            var url = config.baseUrl + "/user/guide/editClass";
+            $http.post(url, info);
+        };
         $scope.editGuideTitle= function (data, id) {
             var info = {title: data, id: id};
             var url = config.baseUrl + "/user/guide/editTitle";
@@ -220,6 +234,16 @@ impApplication.controller("UserGuidesController",
             var info = {iframe: data, id: id};
             var url = config.baseUrl + "/user/guide/editIframe";
             $http.post(url, info);
+        };
+        $scope.deleteGuide = function (guideID) {
+            if ($window.confirm("Do you really want to delete this guide ? \n Please note that this action is not reversible !") == true) {
+                var urlDelete = config.baseUrl+"/user/guide/delete/"+guideID;
+                $http.get(urlDelete);
+                var url = config.baseUrl+"/user/guides/"+$rootScope.user.id;
+                $http.get(url).then(function (data) {
+                    $rootScope.guides = data.data;
+                });
+            }
         };
     });
 
@@ -245,25 +269,32 @@ impApplication.controller("AddUserGuideController",
         };
     });
 
-var ModalGuideCtrl = function ($scope, $rootScope, $modalInstance, guideForm, config, addGuideFactory) {
+var ModalGuideCtrl = function ($scope, $rootScope, $http, $modalInstance, guideForm, config, addGuideFactory) {
     $scope.form = {};
     $scope.submitForm = function (guide) {
         var newGuide = {
-            title: guide.name,
-            description: guide.class,
-            video: guide.points,
-            iframe: guide.profile
+            class: guide.class,
+            title: guide.title,
+            description: guide.description,
+            video: guide.video,
+            iframe: guide.iframe,
+            userId: $rootScope.user.id
         };
-
+console.log(newGuide);
         addGuideFactory.add(newGuide)
             .success(function (data) {
                 if (data == "") { //will return nothing if success
                     $modalInstance.close('closed');
+                    var url = config.baseUrl+"/user/guides/"+$rootScope.user.id;
+                    $http.get(url).then(function (data) {
+                        $rootScope.guides = data.data;
+                    });
                 }
             })
             .error(function (data) {
                 console.log(data);
             });
+
 
     };
 
@@ -357,6 +388,7 @@ impApplication.factory('deleteStandingFactory',
             }
         }
     });
+
 
 impApplication.directive('modal', function () {
     return {

@@ -112,10 +112,10 @@ class ImperialController
 
 
     /**
- * Add a new standing
- *
- * @url POST /standing/add
- */
+     * Add a new standing
+     *
+     * @url POST /standing/add
+     */
     public function addStanding($data)
     {
         $stmt = "";
@@ -272,7 +272,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("SELECT u.mention, u.introvid, u.description, u.facebook, u.twitter,
+            $stmt = self::$conn->prepare("SELECT u.username, u.mention, u.introvid, u.description, u.facebook, u.twitter,
                                           u.youtube, u.googleplus FROM users u WHERE u.id = ?");
             $stmt->bind_param("d", $id);
             $stmt->execute();
@@ -280,11 +280,10 @@ class ImperialController
             if ($stmt->num_rows == 0) {
                 return http_response_code(404);
             }
-            $stmt->bind_result($mention, $introvid, $description, $facebook, $twitter, $youtube, $googleplus);
+            $stmt->bind_result($username, $mention, $introvid, $description, $facebook, $twitter, $youtube, $googleplus);
             while($stmt->fetch()) {
-                $myArray = array('mention'=> $mention, 'introvid' => $introvid, 'description' => $description,
-                                 'facebook' => $facebook, 'twitter' => $twitter, 'youtube' => $youtube,
-                                 'googleplus' => $googleplus);
+                $myArray = array('username' => $username, 'mention'=> $mention, 'introvid' => $introvid, 'description' => $description,
+                    'facebook' => $facebook, 'twitter' => $twitter, 'youtube' => $youtube, 'googleplus' => $googleplus);
             }
         }
         $stmt->close();
@@ -304,7 +303,7 @@ class ImperialController
             $stmt = self::$conn->prepare("UPDATE users SET introvid=?, description=?, facebook=?,
                                           twitter=?, youtube=?, googleplus=? WHERE id =?");
             $stmt->bind_param("ssssssd", $data->introvid, $data->description, $data->facebook, $data->twitter,
-                                         $data->youtube, $data->googleplus, $data->id);
+                $data->youtube, $data->googleplus, $data->id);
             $stmt->execute();
         }
         $stmt->close();
@@ -439,6 +438,88 @@ class ImperialController
     }
 
     /**
+     * Get all the guides
+     *
+     * @url GET /guides
+     */
+    public function getGuides()
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT g.id, u.username, g.class, g.title, g.description, g.video, g.iframe
+                                          FROM guides g INNER JOIN users u ON g.user_id = u.id");
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $username, $class, $title, $description, $video, $iframe);
+            while($stmt->fetch()) {
+                $myArray[] = array('id'=> $id, 'username' => $username, 'class' => $class, 'title' => $title,
+                    'description' => $description, 'video' => $video, 'iframe' => $iframe);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
+     * Get all users having a guide
+     *
+     * @url GET /guides/user
+     */
+    public function getGuidesUser()
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT u.id, u.username
+                                          FROM users u INNER JOIN guides g ON g.user_id = u.id GROUP BY u.id");
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $username);
+            while($stmt->fetch()) {
+                $myArray[] = array('id'=> $id, 'username' => $username);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
+     * Get all users having a guide of a class
+     *
+     * @url GET /guides/user/class/$class
+     */
+    public function getClassGuidesUser($class)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT u.id, u.username, g.class
+                                          FROM users u INNER JOIN guides g ON g.user_id = u.id
+                                          WHERE g.class = ?
+                                          GROUP BY u.id");
+            $stmt->bind_param("s", $class);
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $username, $class);
+            while($stmt->fetch()) {
+                $myArray[] = array('id'=> $id, 'username' => $username, 'class' => $class);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
      * Get a single guide based on guide id
      *
      * @url GET /user/guide/$id
@@ -447,18 +528,18 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("SELECT g.id, g.user_id, g.title, g.description,
-                                          g.video, g.iframe FROM guides g WHERE g.id = ?");
+            $stmt = self::$conn->prepare("SELECT g.id, u.username, g.class, g.title, g.description, g.video, g.iframe
+                                          FROM guides g INNER JOIN users u ON g.user_id = u.id WHERE g.id = ?");
             $stmt->bind_param("d", $id);
             $stmt->execute();
             $stmt->store_result();
             if ($stmt->num_rows == 0) {
                 return http_response_code(404);
             }
-            $stmt->bind_result($id, $userId, $title, $description, $video, $iframe);
+            $stmt->bind_result($id, $username, $class, $title, $description, $video, $iframe);
             while($stmt->fetch()) {
-                $myArray = array('id'=> $id, 'userId' => $userId, 'title' => $title,
-                                 'description' => $description, 'video' => $video, 'iframe' => $iframe);
+                $myArray = array('id'=> $id, 'username' => $username, 'class' => $class, 'title' => $title,
+                    'description' => $description, 'video' => $video, 'iframe' => $iframe);
             }
         }
         $stmt->close();
@@ -475,18 +556,48 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("SELECT g.id, g.user_id, g.title, g.description,
-                                          g.video, g.iframe FROM guides g WHERE g.user_id = ?");
+            $stmt = self::$conn->prepare("SELECT g.id, u.username, g.class, g.title, g.description, g.video, g.iframe
+                                          FROM guides g INNER JOIN users u ON g.user_id = u.id WHERE g.user_id = ?");
             $stmt->bind_param("d", $id);
             $stmt->execute();
             $stmt->store_result();
             if ($stmt->num_rows == 0) {
                 return http_response_code(404);
             }
-            $stmt->bind_result($id, $userId, $title, $description, $video, $iframe);
+            $stmt->bind_result($id, $userId, $class, $title, $description, $video, $iframe);
             while($stmt->fetch()) {
-                $myArray[] = array('id'=> $id, 'userId' => $userId, 'title' => $title,
+                $myArray[] = array('id'=> $id, 'userId' => $userId, 'class' => $class, 'title' => $title,
                     'description' => $description, 'video' => $video, 'iframe' => $iframe);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
+     * Get a all guides titles from an user based on user id and the class
+     *
+     * @url POST /user/guides/titles
+     */
+    public function getUserGuidesTitles()
+    {
+        $class = $_POST['class'];
+        $id = $_POST['id'];
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT g.id, g.title FROM guides g
+                                          INNER JOIN users u ON g.user_id = u.id
+                                          WHERE g.class = ? AND g.user_id = ?");
+            $stmt->bind_param("sd", $class, $id);
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $title);
+            while($stmt->fetch()) {
+                $myArray[] = array('guideID' => $id, 'title' => $title);
             }
         }
         $stmt->close();
@@ -504,8 +615,8 @@ class ImperialController
         $stmt = "";
         $result = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("INSERT INTO guides (id, title, description, video, iframe) VALUES ('',?,?,?,?)");
-            $stmt->bind_param("ssss", $data->title, $data->description, $data->video, $data->iframe);
+            $stmt = self::$conn->prepare("INSERT INTO guides (id, user_id, class, title, description, video, iframe) VALUES ('',?,?,?,?,?,?)");
+            $stmt->bind_param("dsssss", $data->userId, $data->class, $data->title, $data->description, $data->video, $data->iframe);
             $stmt->execute();
         }
         $stmt->close();
@@ -516,7 +627,7 @@ class ImperialController
     /**
      * Delete a guide
      *
-     * @url GET /user/guide/$id
+     * @url GET /user/guide/delete/$id
      */
     public function deleteGuide($id)
     {
@@ -541,8 +652,26 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE guides SET title=?, description=?, video=?, iframe=? WHERE id =?");
-            $stmt->bind_param("ssssd", $data->title, $data->description, $data->video, $data->iframe, $data->id);
+            $stmt = self::$conn->prepare("UPDATE guides SET class=?, title=?, description=?, video=?, iframe=? WHERE id =?");
+            $stmt->bind_param("sssssd", $data->class, $data->title, $data->description, $data->video, $data->iframe, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a user guide class
+     *
+     * @url POST /user/guide/editClass
+     */
+    public function editUserGuideClass($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE guides SET class=? WHERE id =?");
+            $stmt->bind_param("sd", $data->class, $data->id);
             $stmt->execute();
         }
         $stmt->close();

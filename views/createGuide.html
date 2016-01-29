@@ -5,8 +5,21 @@
     <div class="modal-body">
 
         <div class="form-group">
+            <label>Class</label>
+            <select class="form-control" id="class" ng-model="guide.class">
+                <option value="Assassin">Assassin</option>
+                <option value="Blade Dancer">Blade Dancer</option>
+                <option value="Blade Master">Blade Master</option>
+                <option value="Destroyer">Destroyer</option>
+                <option value="Force Master">Force Master</option>
+                <option value="Kung Fu Master">Kung Fu Master</option>
+                <option value="Summoner">Summoner</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" ng-model="guide.title"  required>
+            <input type="text" class="form-control" ng-model="guide.title">
         </div>
 
         <div class="form-group">

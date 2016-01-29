@@ -4,12 +4,20 @@
     </div>
 </div>
 
+<h2>
+    The title of the guide is the blue box before entering the guide <br>
+    The description is a short text before each guide <br>
+    The video should be an iframe (ex : < iframe width="560" height="315" src="https://www.youtube.com/embed/e4p8ewFhvWo" frameborder="0" allowfullscreen>< /iframe>)
+    <br>You can add a video or an iframe or both
+</h2>
+
 <div ng-controller="UserGuidesController">
     <div class="container">
         <table class="table table-hover table-bordered">
             <thead>
             <tr>
                 <th>Guide ID</th>
+                <th>Class</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Video</th>
@@ -22,6 +30,11 @@
             <tr>
                 <td>
                     <span>{{guide.id}}</span>
+                </td>
+                <td>
+                    <span editable-select="guide.class" e-ng-options="c.value as c.text for c in classes" onbeforesave="editGuideClass($data, guide.id)">
+                        {{guide.class || 'no title'}}
+                    </span>
                 </td>
                 <td>
                     <span editable-text="guide.title" onbeforesave="editGuideTitle($data, guide.id)">
