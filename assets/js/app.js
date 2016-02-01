@@ -278,8 +278,8 @@ impApplication.controller("TournamentsController",
             {value: 'eu', text: 'Europe'}
         ];
         $scope.handleTournamentsBtnClick = function (status) {
-            $scope.status = status.status;
-            var url = config.baseUrl + "/tournaments/" + $scope.status;
+            $scope.tournamentStatus = status.status;
+            var url = config.baseUrl + "/tournaments/" + $scope.tournamentStatus;
             $http.get(url).then(function (data) {
                 $rootScope.tournaments = data.data;
             });
@@ -320,12 +320,16 @@ impApplication.controller("TournamentsController",
                 var info = {finished: 1, id: tournament.id};
                 var url = config.baseUrl + "/tournament/edit/status";
                 $http.post(url, info);
+                url = config.baseUrl + "/tournaments/" + $scope.tournamentStatus;
+                $http.get(url).then(function (data) {
+                    $rootScope.tournaments = data.data;
+                });
             };
             $scope.deleteTournament = function (tournament) {
                 var info = {id: tournament.id};
                 if ($window.confirm("Do you really want to delete "+tournament.name +" \n Please note that this action is not reversible !") == true) {
                     deleteTournamentFactory.delete(info);
-                    var url = config.baseUrl + "/tournaments/" + $scope.status;
+                    var url = config.baseUrl + "/tournaments/" + $scope.tournamentStatus;
                     $http.get(url).then(function (data) {
                         $rootScope.tournaments = data.data;
                     });
@@ -429,16 +433,18 @@ var ModalTournamentCtrl = function ($scope, $rootScope, $http, $modalInstance, t
     $scope.form = {};
     $scope.submitForm = function (tournament) {
         var newTournament = {
+            name: tournament.name,
             startDate: tournament.startDate,
             description: tournament.description,
             brackets: tournament.brackets,
-            players: tournament.players
+            players: tournament.players,
+            region: tournament.region
         };
         addTournamentFactory.add(newTournament)
             .success(function (data) {
-                if (data == "") { //will return nothing if success
+                if (data == true) { //will return true if success
                     $modalInstance.close('closed');
-                    var url = config.baseUrl+"/tournaments";
+                    var url = config.baseUrl+"/tournaments/ongoing";
                     $http.get(url).then(function (data) {
                         $rootScope.tournaments = data.data;
                     });
@@ -516,7 +522,7 @@ impApplication.factory('deleteTournamentFactory',
 
 impApplication.factory('addTournamentFactory',
     function (config, $http) {
-        var url = config.baseUrl + "/tournaments/add";
+        var url = config.baseUrl + "/tournament/add";
         return {
             add: function(params) {
                 return $http.post(url, params)

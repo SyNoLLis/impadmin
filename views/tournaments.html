@@ -4,12 +4,15 @@
     </div>
 </div>
 
+<h4>When you create a new tournament, beware that it will always be an ongoing tournament.</h4>
+<br>
+
 <div ng-controller="TournamentsController">
     <div class="container">
         <div class="row">
             <form class="span4">
                 <div class="form-group">
-                    <label>Status</label>
+                    <label>Select a tournament status</label>
                     <select class="form-control" ng-model="status.status">
                         <option value="ongoing">Ongoing</option>
                         <option value="finished">Finished</option>

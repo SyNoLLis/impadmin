@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7549e4e-f6f0-455e-b434-932804ce7724" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/impbnsco_admin-real.sql" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/ImperialController.php" afterPath="$PROJECT_DIR$/api/ImperialController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/style.css" afterPath="$PROJECT_DIR$/assets/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app.js" afterPath="$PROJECT_DIR$/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/nav.html" afterPath="$PROJECT_DIR$/views/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/userGuides.html" afterPath="$PROJECT_DIR$/views/userGuides.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/tournaments.html" afterPath="$PROJECT_DIR$/views/tournaments.html" />
     </list>
     <ignored path="impadmin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="ImperialController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/ImperialController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.091561936">
-              <caret line="122" column="84" selection-start-line="0" selection-start-column="0" selection-end-line="1028" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.6875">
+              <caret line="846" column="142" selection-start-line="846" selection-start-column="142" selection-end-line="846" selection-end-column="142" />
               <folding>
                 <element signature="n#__construct#0;n#ImperialController#0;n#!!top" expanded="false" />
                 <element signature="n#__destruct#0;n#ImperialController#0;n#!!top" expanded="false" />
@@ -42,109 +41,104 @@
                 <element signature="e#1448#1590#0#PHP" expanded="false" />
                 <element signature="e#2639#2749#0#PHP" expanded="false" />
                 <element signature="n#getStanding#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#4158#4235#0#PHP" expanded="false" />
-                <element signature="e#4657#4730#0#PHP" expanded="false" />
+                <element signature="e#4151#4228#0#PHP" expanded="false" />
+                <element signature="e#4650#4723#0#PHP" expanded="false" />
                 <element signature="n#editStanding#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#5242#5324#0#PHP" expanded="false" />
+                <element signature="e#5235#5317#0#PHP" expanded="false" />
                 <element signature="n#editStandingName#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#5740#5824#0#PHP" expanded="false" />
+                <element signature="e#5733#5817#0#PHP" expanded="false" />
                 <element signature="n#editStandingClass#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#6243#6329#0#PHP" expanded="false" />
+                <element signature="e#6236#6322#0#PHP" expanded="false" />
                 <element signature="n#editStandingPoints#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#6751#6839#0#PHP" expanded="false" />
+                <element signature="e#6744#6832#0#PHP" expanded="false" />
                 <element signature="n#editStandingProfile#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#7264#7350#0#PHP" expanded="false" />
+                <element signature="e#7257#7343#0#PHP" expanded="false" />
                 <element signature="n#editStandingRegion#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#8894#8967#0#PHP" expanded="false" />
+                <element signature="e#8887#8960#0#PHP" expanded="false" />
                 <element signature="n#editUserInfos#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#9552#9630#0#PHP" expanded="false" />
+                <element signature="e#9545#9623#0#PHP" expanded="false" />
                 <element signature="n#editUserMention#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#10001#10081#0#PHP" expanded="false" />
+                <element signature="e#9994#10074#0#PHP" expanded="false" />
                 <element signature="n#editUserIntrovid#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#10455#10541#0#PHP" expanded="false" />
+                <element signature="e#10448#10534#0#PHP" expanded="false" />
                 <element signature="n#editUserDescription#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#10924#11004#0#PHP" expanded="false" />
+                <element signature="e#10917#10997#0#PHP" expanded="false" />
                 <element signature="n#editUserFacebook#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#11378#11456#0#PHP" expanded="false" />
+                <element signature="e#11371#11449#0#PHP" expanded="false" />
                 <element signature="n#editUserTwitter#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#11827#11905#0#PHP" expanded="false" />
+                <element signature="e#11820#11898#0#PHP" expanded="false" />
                 <element signature="n#editUserYoutube#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#12276#12360#0#PHP" expanded="false" />
+                <element signature="e#12269#12353#0#PHP" expanded="false" />
                 <element signature="n#editUserGooglePlus#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#12740#12808#0#PHP" expanded="false" />
+                <element signature="e#12733#12801#0#PHP" expanded="false" />
                 <element signature="n#getGuides#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#13724#13807#0#PHP" expanded="false" />
+                <element signature="e#13717#13800#0#PHP" expanded="false" />
                 <element signature="n#getGuidesUser#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#14513#14620#0#PHP" expanded="false" />
+                <element signature="e#14506#14613#0#PHP" expanded="false" />
                 <element signature="n#getClassGuidesUser#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#15519#15613#0#PHP" expanded="false" />
+                <element signature="e#15512#15606#0#PHP" expanded="false" />
                 <element signature="n#getUserGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#16589#16693#0#PHP" expanded="false" />
+                <element signature="e#16582#16686#0#PHP" expanded="false" />
                 <element signature="n#getUserGuides#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#17671#17801#0#PHP" expanded="false" />
-                <element signature="e#18683#18757#0#PHP" expanded="false" />
-                <element signature="e#19275#19354#0#PHP" expanded="false" />
+                <element signature="e#17664#17794#0#PHP" expanded="false" />
+                <element signature="e#19268#19347#0#PHP" expanded="false" />
                 <element signature="n#deleteGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#19714#19793#0#PHP" expanded="false" />
+                <element signature="e#19707#19786#0#PHP" expanded="false" />
                 <element signature="n#editUserGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
                 <element signature="n#editUserGuideClass#0;n#ImperialController#0;n#!!top" expanded="false" />
                 <element signature="n#editUserGuideTitle#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="n#getTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="n#getOngoingTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="n#getFinishedTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-                <element signature="e#27514#27601#0#PHP" expanded="false" />
-                <marker date="1454333469428" expanded="true" signature="811:895" placeholder="SELECT * FRO... users" />
-                <marker date="1454333469428" expanded="true" signature="1811:1874" placeholder="SELECT * FRO... ${$month}" />
-                <marker date="1454333469428" expanded="true" signature="1979:2061" placeholder="SELECT * FRO... ${$month}" />
-                <marker date="1454333469428" expanded="true" signature="2912:2967" placeholder="SELECT * FRO... ${$month}" />
-                <marker date="1454333469428" expanded="true" signature="3765:3915" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-                <marker date="1454333469428" expanded="true" signature="4395:4463" placeholder="DELETE FROM " />
-                <marker date="1454333469428" expanded="true" signature="4406:4437" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-                <marker date="1454333469428" expanded="true" signature="7980:8144" placeholder="SELECT u.men... users" />
-                <marker date="1454333469428" expanded="true" signature="7980:8153" placeholder="SELECT u.men... users" />
-                <marker date="1454333469428" expanded="true" signature="9104:9248" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="9769:9807" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="10221:10260" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="10684:10726" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="11144:11183" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="11595:11633" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="12044:12082" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="12502:12543" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="12936:13106" placeholder="SELECT g.id,... guides" />
-                <marker date="1454333469428" expanded="true" signature="13939:14057" placeholder="SELECT u.id,... users" />
-                <marker date="1454333469428" expanded="true" signature="13939:14071" placeholder="SELECT u.id,... users" />
-                <marker date="1454333469428" expanded="true" signature="14763:15006" placeholder="SELECT u.id,... users" />
-                <marker date="1454333469428" expanded="true" signature="15747:15822" placeholder="SELECT u.men... users" />
-                <marker date="1454333469428" expanded="true" signature="15747:15932" placeholder="SELECT g.id,... guides" />
-                <marker date="1454333469428" expanded="true" signature="16828:17018" placeholder="SELECT g.id,... guides" />
-                <marker date="1454333469428" expanded="true" signature="18001:18021" placeholder="SELECT g.id,... guides" />
-                <marker date="1454333469428" expanded="true" signature="18001:18193" placeholder="SELECT g.tit... guides" />
-                <marker date="1454333469428" expanded="true" signature="18001:18194" placeholder="SELECT g.tit... guides" />
-                <marker date="1454333469428" expanded="true" signature="18911:19009" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-                <marker date="1454333469428" expanded="true" signature="19509:19540" placeholder="DELETE FROM " />
-                <marker date="1454333469428" expanded="true" signature="19930:20010" placeholder="UPDATE users... " />
-                <marker date="1454333469428" expanded="true" signature="20499:20536" placeholder="UPDATE guide... " />
-                <marker date="1454333469428" expanded="true" signature="20958:20995" placeholder="UPDATE guide... " />
-                <marker date="1454333469428" expanded="true" signature="21435:21478" placeholder="UPDATE guide... " />
-                <marker date="1454333469428" expanded="true" signature="21906:21943" placeholder="UPDATE guide... " />
-                <marker date="1454333469428" expanded="true" signature="22368:22406" placeholder="UPDATE guide... " />
-                <marker date="1454333469428" expanded="true" signature="22806:22945" placeholder="SELECT id, s... tournaments" />
-                <marker date="1454333469428" expanded="true" signature="22813:22927" placeholder="INSERT INTO tournaments... " />
-                <marker date="1454333469428" expanded="true" signature="23845:23984" placeholder="SELECT id, s... tournaments" />
-                <marker date="1454333469428" expanded="true" signature="23845:24005" placeholder="SELECT id, s... tournaments" />
-                <marker date="1454333469428" expanded="true" signature="24908:25080" placeholder="SELECT id, s... tournaments" />
-                <marker date="1454333469428" expanded="true" signature="25943:26083" placeholder="INSERT INTO tournaments... " />
-                <marker date="1454333469428" expanded="true" signature="26575:26604" placeholder="DELETE FROM " />
-                <marker date="1454333469428" expanded="true" signature="26575:26615" placeholder="DELETE FROM " />
-                <marker date="1454333469428" expanded="true" signature="26586:26601" placeholder="INSERT INTO tournaments... " />
-                <marker date="1454333469428" expanded="true" signature="27014:27215" placeholder="UPDATE guide... " />
-                <marker date="1454333469428" expanded="true" signature="27743:27787" placeholder="UPDATE tourn... " />
-                <marker date="1454333469428" expanded="true" signature="28207:28252" placeholder="UPDATE tourn... " />
-                <marker date="1454333469428" expanded="true" signature="28698:28745" placeholder="UPDATE tourn... " />
-                <marker date="1454333469428" expanded="true" signature="29191:29235" placeholder="UPDATE tourn... " />
-                <marker date="1454333469428" expanded="true" signature="29675:29718" placeholder="UPDATE tourn... " />
-                <marker date="1454333469428" expanded="true" signature="30147:30189" placeholder="UPDATE tourn... " />
-                <marker date="1454333469428" expanded="true" signature="30617:30661" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="811:895" placeholder="SELECT * FRO... users" />
+                <marker date="1454341448199" expanded="true" signature="1811:1874" placeholder="SELECT * FRO... ${$month}" />
+                <marker date="1454341448199" expanded="true" signature="1979:2061" placeholder="SELECT * FRO... ${$month}" />
+                <marker date="1454341448199" expanded="true" signature="2912:2967" placeholder="SELECT * FRO... ${$month}" />
+                <marker date="1454341448199" expanded="true" signature="3765:3908" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+                <marker date="1454341448199" expanded="true" signature="4388:4456" placeholder="DELETE FROM " />
+                <marker date="1454341448199" expanded="true" signature="4399:4430" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+                <marker date="1454341448199" expanded="true" signature="7973:8137" placeholder="SELECT u.men... users" />
+                <marker date="1454341448199" expanded="true" signature="7973:8146" placeholder="SELECT u.men... users" />
+                <marker date="1454341448199" expanded="true" signature="9097:9241" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="9762:9800" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="10214:10253" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="10677:10719" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="11137:11176" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="11588:11626" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="12037:12075" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="12495:12536" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="12929:13099" placeholder="SELECT g.id,... guides" />
+                <marker date="1454341448199" expanded="true" signature="13932:14050" placeholder="SELECT u.id,... users" />
+                <marker date="1454341448199" expanded="true" signature="13932:14064" placeholder="SELECT u.id,... users" />
+                <marker date="1454341448199" expanded="true" signature="14756:14999" placeholder="SELECT u.id,... users" />
+                <marker date="1454341448199" expanded="true" signature="15740:15815" placeholder="SELECT u.men... users" />
+                <marker date="1454341448199" expanded="true" signature="15740:15925" placeholder="SELECT g.id,... guides" />
+                <marker date="1454341448199" expanded="true" signature="16821:17011" placeholder="SELECT g.id,... guides" />
+                <marker date="1454341448199" expanded="true" signature="17994:18014" placeholder="SELECT g.id,... guides" />
+                <marker date="1454341448199" expanded="true" signature="17994:18186" placeholder="SELECT g.tit... guides" />
+                <marker date="1454341448199" expanded="true" signature="17994:18187" placeholder="SELECT g.tit... guides" />
+                <marker date="1454341448199" expanded="true" signature="18904:19002" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+                <marker date="1454341448199" expanded="true" signature="19502:19533" placeholder="DELETE FROM " />
+                <marker date="1454341448199" expanded="true" signature="19923:20003" placeholder="UPDATE users... " />
+                <marker date="1454341448199" expanded="true" signature="20492:20529" placeholder="UPDATE guide... " />
+                <marker date="1454341448199" expanded="true" signature="20951:20988" placeholder="UPDATE guide... " />
+                <marker date="1454341448199" expanded="true" signature="21428:21471" placeholder="UPDATE guide... " />
+                <marker date="1454341448199" expanded="true" signature="21899:21936" placeholder="UPDATE guide... " />
+                <marker date="1454341448199" expanded="true" signature="22361:22399" placeholder="UPDATE guide... " />
+                <marker date="1454341448199" expanded="true" signature="22799:22938" placeholder="SELECT id, s... tournaments" />
+                <marker date="1454341448199" expanded="true" signature="22806:22920" placeholder="INSERT INTO tournaments... " />
+                <marker date="1454341448199" expanded="true" signature="23838:23977" placeholder="SELECT id, s... tournaments" />
+                <marker date="1454341448199" expanded="true" signature="23838:23998" placeholder="SELECT id, s... tournaments" />
+                <marker date="1454341448199" expanded="true" signature="24901:25073" placeholder="SELECT id, s... tournaments" />
+                <marker date="1454341448199" expanded="true" signature="25993:26160" placeholder="INSERT INTO guides... " />
+                <marker date="1454341448199" expanded="true" signature="26673:26702" placeholder="DELETE FROM " />
+                <marker date="1454341448199" expanded="true" signature="26673:26713" placeholder="DELETE FROM " />
+                <marker date="1454341448199" expanded="true" signature="26684:26699" placeholder="INSERT INTO tournaments... " />
+                <marker date="1454341448199" expanded="true" signature="27112:27314" placeholder="UPDATE guide... " />
+                <marker date="1454341448199" expanded="true" signature="27842:27887" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="28307:28353" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="28799:28847" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="29293:29338" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="29778:29822" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="30251:30294" placeholder="UPDATE tourn... " />
+                <marker date="1454341448199" expanded="true" signature="30722:30767" placeholder="UPDATE tourn... " />
               </folding>
             </state>
           </provider>
@@ -153,10 +147,11 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.379311">
-              <caret line="404" column="17" selection-start-line="404" selection-start-column="17" selection-end-line="404" selection-end-column="17" />
+            <state vertical-scroll-proportion="-13.379311">
+              <caret line="443" column="38" selection-start-line="443" selection-start-column="38" selection-end-line="443" selection-end-column="38" />
               <folding>
                 <element signature="e#1427#2088#0" expanded="false" />
+                <element signature="e#2277#5489#0" expanded="false" />
                 <element signature="e#2304#2708#0" expanded="false" />
                 <element signature="e#2735#2838#0" expanded="false" />
                 <element signature="e#4264#4453#0" expanded="false" />
@@ -179,44 +174,41 @@
                 <element signature="e#9401#9557#0" expanded="false" />
                 <element signature="e#9612#9770#0" expanded="false" />
                 <element signature="e#10402#11034#0" expanded="false" />
+                <element signature="e#11172#14192#0" expanded="false" />
                 <element signature="e#11199#11302#0" expanded="false" />
-                <element signature="e#11720#11891#0" expanded="false" />
-                <element signature="e#11958#12134#0" expanded="false" />
-                <element signature="e#12203#12388#0" expanded="false" />
-                <element signature="e#12454#12633#0" expanded="false" />
-                <element signature="e#12698#12875#0" expanded="false" />
-                <element signature="e#12939#13114#0" expanded="false" />
-                <element signature="e#13173#13358#0" expanded="false" />
-                <element signature="e#13420#13933#0" expanded="false" />
-                <element signature="e#14043#14695#0" expanded="false" />
-                <element signature="e#17078#17991#0" expanded="false" />
-                <element signature="e#18062#18240#0" expanded="false" />
-                <element signature="e#18308#18433#0" expanded="false" />
-                <element signature="e#18511#18694#0" expanded="false" />
-                <element signature="e#18769#18954#0" expanded="false" />
-                <element signature="e#19035#19224#0" expanded="false" />
-                <element signature="e#19578#19764#0" expanded="false" />
-                <element signature="e#19814#21094#0" expanded="false" />
+                <element signature="e#12223#12408#0" expanded="false" />
+                <element signature="e#12474#12653#0" expanded="false" />
+                <element signature="e#12718#12895#0" expanded="false" />
+                <element signature="e#12959#13134#0" expanded="false" />
+                <element signature="e#13193#13590#0" expanded="false" />
+                <element signature="e#13652#14175#0" expanded="false" />
+                <element signature="e#18385#18563#0" expanded="false" />
+                <element signature="e#19092#19277#0" expanded="false" />
+                <element signature="e#19358#19547#0" expanded="false" />
+                <element signature="e#20136#21416#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createStanding.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/createStanding.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.230769">
-              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-              <folding />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+              <folding>
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tournaments.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/tournaments.html">
+      <file leaf-file-name="createTournament.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/createTournament.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.538462">
-              <caret line="73" column="123" selection-start-line="73" selection-start-column="123" selection-end-line="73" selection-end-column="123" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -250,7 +242,9 @@
         <option value="$PROJECT_DIR$/views/userGuides.html" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/views/standings.html" />
+        <option value="$PROJECT_DIR$/impbnsco_admin-real.sql" />
         <option value="$PROJECT_DIR$/views/tournaments.html" />
+        <option value="$PROJECT_DIR$/views/createTournament.html" />
         <option value="$PROJECT_DIR$/assets/js/app.js" />
         <option value="$PROJECT_DIR$/api/ImperialController.php" />
       </list>
@@ -268,7 +262,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1370" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -325,38 +319,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -430,10 +392,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25801528" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25567323" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -482,109 +444,104 @@
             <element signature="e#1448#1590#0#PHP" expanded="false" />
             <element signature="e#2639#2749#0#PHP" expanded="false" />
             <element signature="n#getStanding#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#4158#4235#0#PHP" expanded="false" />
-            <element signature="e#4657#4730#0#PHP" expanded="false" />
+            <element signature="e#4151#4228#0#PHP" expanded="false" />
+            <element signature="e#4650#4723#0#PHP" expanded="false" />
             <element signature="n#editStanding#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#5242#5324#0#PHP" expanded="false" />
+            <element signature="e#5235#5317#0#PHP" expanded="false" />
             <element signature="n#editStandingName#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#5740#5824#0#PHP" expanded="false" />
+            <element signature="e#5733#5817#0#PHP" expanded="false" />
             <element signature="n#editStandingClass#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#6243#6329#0#PHP" expanded="false" />
+            <element signature="e#6236#6322#0#PHP" expanded="false" />
             <element signature="n#editStandingPoints#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#6751#6839#0#PHP" expanded="false" />
+            <element signature="e#6744#6832#0#PHP" expanded="false" />
             <element signature="n#editStandingProfile#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#7264#7350#0#PHP" expanded="false" />
+            <element signature="e#7257#7343#0#PHP" expanded="false" />
             <element signature="n#editStandingRegion#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#8894#8967#0#PHP" expanded="false" />
+            <element signature="e#8887#8960#0#PHP" expanded="false" />
             <element signature="n#editUserInfos#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#9552#9630#0#PHP" expanded="false" />
+            <element signature="e#9545#9623#0#PHP" expanded="false" />
             <element signature="n#editUserMention#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#10001#10081#0#PHP" expanded="false" />
+            <element signature="e#9994#10074#0#PHP" expanded="false" />
             <element signature="n#editUserIntrovid#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#10455#10541#0#PHP" expanded="false" />
+            <element signature="e#10448#10534#0#PHP" expanded="false" />
             <element signature="n#editUserDescription#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#10924#11004#0#PHP" expanded="false" />
+            <element signature="e#10917#10997#0#PHP" expanded="false" />
             <element signature="n#editUserFacebook#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#11378#11456#0#PHP" expanded="false" />
+            <element signature="e#11371#11449#0#PHP" expanded="false" />
             <element signature="n#editUserTwitter#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#11827#11905#0#PHP" expanded="false" />
+            <element signature="e#11820#11898#0#PHP" expanded="false" />
             <element signature="n#editUserYoutube#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#12276#12360#0#PHP" expanded="false" />
+            <element signature="e#12269#12353#0#PHP" expanded="false" />
             <element signature="n#editUserGooglePlus#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#12740#12808#0#PHP" expanded="false" />
+            <element signature="e#12733#12801#0#PHP" expanded="false" />
             <element signature="n#getGuides#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#13724#13807#0#PHP" expanded="false" />
+            <element signature="e#13717#13800#0#PHP" expanded="false" />
             <element signature="n#getGuidesUser#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#14513#14620#0#PHP" expanded="false" />
+            <element signature="e#14506#14613#0#PHP" expanded="false" />
             <element signature="n#getClassGuidesUser#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#15519#15613#0#PHP" expanded="false" />
+            <element signature="e#15512#15606#0#PHP" expanded="false" />
             <element signature="n#getUserGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#16589#16693#0#PHP" expanded="false" />
+            <element signature="e#16582#16686#0#PHP" expanded="false" />
             <element signature="n#getUserGuides#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#17671#17801#0#PHP" expanded="false" />
-            <element signature="e#18683#18757#0#PHP" expanded="false" />
-            <element signature="e#19275#19354#0#PHP" expanded="false" />
+            <element signature="e#17664#17794#0#PHP" expanded="false" />
+            <element signature="e#19268#19347#0#PHP" expanded="false" />
             <element signature="n#deleteGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#19714#19793#0#PHP" expanded="false" />
+            <element signature="e#19707#19786#0#PHP" expanded="false" />
             <element signature="n#editUserGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
             <element signature="n#editUserGuideClass#0;n#ImperialController#0;n#!!top" expanded="false" />
             <element signature="n#editUserGuideTitle#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="n#getTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="n#getOngoingTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="n#getFinishedTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#27514#27601#0#PHP" expanded="false" />
-            <marker date="1454333469428" expanded="true" signature="811:895" placeholder="SELECT * FRO... users" />
-            <marker date="1454333469428" expanded="true" signature="1811:1874" placeholder="SELECT * FRO... ${$month}" />
-            <marker date="1454333469428" expanded="true" signature="1979:2061" placeholder="SELECT * FRO... ${$month}" />
-            <marker date="1454333469428" expanded="true" signature="2912:2967" placeholder="SELECT * FRO... ${$month}" />
-            <marker date="1454333469428" expanded="true" signature="3765:3915" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-            <marker date="1454333469428" expanded="true" signature="4395:4463" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="4406:4437" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-            <marker date="1454333469428" expanded="true" signature="7980:8144" placeholder="SELECT u.men... users" />
-            <marker date="1454333469428" expanded="true" signature="7980:8153" placeholder="SELECT u.men... users" />
-            <marker date="1454333469428" expanded="true" signature="9104:9248" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="9769:9807" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="10221:10260" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="10684:10726" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="11144:11183" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="11595:11633" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="12044:12082" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="12502:12543" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="12936:13106" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="13939:14057" placeholder="SELECT u.id,... users" />
-            <marker date="1454333469428" expanded="true" signature="13939:14071" placeholder="SELECT u.id,... users" />
-            <marker date="1454333469428" expanded="true" signature="14763:15006" placeholder="SELECT u.id,... users" />
-            <marker date="1454333469428" expanded="true" signature="15747:15822" placeholder="SELECT u.men... users" />
-            <marker date="1454333469428" expanded="true" signature="15747:15932" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="16828:17018" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="18001:18021" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="18001:18193" placeholder="SELECT g.tit... guides" />
-            <marker date="1454333469428" expanded="true" signature="18001:18194" placeholder="SELECT g.tit... guides" />
-            <marker date="1454333469428" expanded="true" signature="18911:19009" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-            <marker date="1454333469428" expanded="true" signature="19509:19540" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="19930:20010" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="20499:20536" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="20958:20995" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="21435:21478" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="21906:21943" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="22368:22406" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="22806:22945" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="22813:22927" placeholder="INSERT INTO tournaments... " />
-            <marker date="1454333469428" expanded="true" signature="23845:23984" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="23845:24005" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="24908:25080" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="25943:26083" placeholder="INSERT INTO tournaments... " />
-            <marker date="1454333469428" expanded="true" signature="26575:26604" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="26575:26615" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="26586:26601" placeholder="INSERT INTO tournaments... " />
-            <marker date="1454333469428" expanded="true" signature="27014:27215" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="27743:27787" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="28207:28252" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="28698:28745" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="29191:29235" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="29675:29718" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="30147:30189" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="30617:30661" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="811:895" placeholder="SELECT * FRO... users" />
+            <marker date="1454341448199" expanded="true" signature="1811:1874" placeholder="SELECT * FRO... ${$month}" />
+            <marker date="1454341448199" expanded="true" signature="1979:2061" placeholder="SELECT * FRO... ${$month}" />
+            <marker date="1454341448199" expanded="true" signature="2912:2967" placeholder="SELECT * FRO... ${$month}" />
+            <marker date="1454341448199" expanded="true" signature="3765:3908" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+            <marker date="1454341448199" expanded="true" signature="4388:4456" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="4399:4430" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+            <marker date="1454341448199" expanded="true" signature="7973:8137" placeholder="SELECT u.men... users" />
+            <marker date="1454341448199" expanded="true" signature="7973:8146" placeholder="SELECT u.men... users" />
+            <marker date="1454341448199" expanded="true" signature="9097:9241" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="9762:9800" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="10214:10253" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="10677:10719" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="11137:11176" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="11588:11626" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="12037:12075" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="12495:12536" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="12929:13099" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="13932:14050" placeholder="SELECT u.id,... users" />
+            <marker date="1454341448199" expanded="true" signature="13932:14064" placeholder="SELECT u.id,... users" />
+            <marker date="1454341448199" expanded="true" signature="14756:14999" placeholder="SELECT u.id,... users" />
+            <marker date="1454341448199" expanded="true" signature="15740:15815" placeholder="SELECT u.men... users" />
+            <marker date="1454341448199" expanded="true" signature="15740:15925" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="16821:17011" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="17994:18014" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="17994:18186" placeholder="SELECT g.tit... guides" />
+            <marker date="1454341448199" expanded="true" signature="17994:18187" placeholder="SELECT g.tit... guides" />
+            <marker date="1454341448199" expanded="true" signature="18904:19002" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+            <marker date="1454341448199" expanded="true" signature="19502:19533" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="19923:20003" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="20492:20529" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="20951:20988" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="21428:21471" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="21899:21936" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="22361:22399" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="22799:22938" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="22806:22920" placeholder="INSERT INTO tournaments... " />
+            <marker date="1454341448199" expanded="true" signature="23838:23977" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="23838:23998" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="24901:25073" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="25993:26160" placeholder="INSERT INTO guides... " />
+            <marker date="1454341448199" expanded="true" signature="26673:26702" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="26673:26713" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="26684:26699" placeholder="INSERT INTO tournaments... " />
+            <marker date="1454341448199" expanded="true" signature="27112:27314" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="27842:27887" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="28307:28353" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="28799:28847" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="29293:29338" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="29778:29822" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="30251:30294" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="30722:30767" placeholder="UPDATE tourn... " />
           </folding>
         </state>
       </provider>
@@ -606,6 +563,7 @@
           <caret line="198" column="58" selection-start-line="198" selection-start-column="58" selection-end-line="198" selection-end-column="58" />
           <folding>
             <element signature="e#1427#2088#0" expanded="false" />
+            <element signature="e#2277#5489#0" expanded="false" />
             <element signature="e#2304#2708#0" expanded="false" />
             <element signature="e#2735#2838#0" expanded="false" />
             <element signature="e#4264#4453#0" expanded="false" />
@@ -628,24 +586,18 @@
             <element signature="e#9401#9557#0" expanded="false" />
             <element signature="e#9612#9770#0" expanded="false" />
             <element signature="e#10402#11034#0" expanded="false" />
+            <element signature="e#11172#14192#0" expanded="false" />
             <element signature="e#11199#11302#0" expanded="false" />
-            <element signature="e#11720#11891#0" expanded="false" />
-            <element signature="e#11958#12134#0" expanded="false" />
-            <element signature="e#12203#12388#0" expanded="false" />
-            <element signature="e#12454#12633#0" expanded="false" />
-            <element signature="e#12698#12875#0" expanded="false" />
-            <element signature="e#12939#13114#0" expanded="false" />
-            <element signature="e#13173#13358#0" expanded="false" />
-            <element signature="e#13420#13933#0" expanded="false" />
-            <element signature="e#14043#14695#0" expanded="false" />
-            <element signature="e#17078#17991#0" expanded="false" />
-            <element signature="e#18062#18240#0" expanded="false" />
-            <element signature="e#18308#18433#0" expanded="false" />
-            <element signature="e#18511#18694#0" expanded="false" />
-            <element signature="e#18769#18954#0" expanded="false" />
-            <element signature="e#19035#19224#0" expanded="false" />
-            <element signature="e#19578#19764#0" expanded="false" />
-            <element signature="e#19814#21094#0" expanded="false" />
+            <element signature="e#12223#12408#0" expanded="false" />
+            <element signature="e#12474#12653#0" expanded="false" />
+            <element signature="e#12718#12895#0" expanded="false" />
+            <element signature="e#12959#13134#0" expanded="false" />
+            <element signature="e#13193#13590#0" expanded="false" />
+            <element signature="e#13652#14175#0" expanded="false" />
+            <element signature="e#18385#18563#0" expanded="false" />
+            <element signature="e#19092#19277#0" expanded="false" />
+            <element signature="e#19358#19547#0" expanded="false" />
+            <element signature="e#20136#21416#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -679,13 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3967684">
-          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -766,26 +711,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/tournaments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.538462">
-          <caret line="73" column="123" selection-start-line="73" selection-start-column="123" selection-end-line="73" selection-end-column="123" />
+        <state vertical-scroll-proportion="0.6032316">
+          <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/createStanding.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.230769">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.41113105">
+          <caret line="38" column="17" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createTournament.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.379311">
-          <caret line="404" column="17" selection-start-line="404" selection-start-column="17" selection-end-line="404" selection-end-column="17" />
+        <state vertical-scroll-proportion="-13.379311">
+          <caret line="443" column="38" selection-start-line="443" selection-start-column="38" selection-end-line="443" selection-end-column="38" />
           <folding>
             <element signature="e#1427#2088#0" expanded="false" />
+            <element signature="e#2277#5489#0" expanded="false" />
             <element signature="e#2304#2708#0" expanded="false" />
             <element signature="e#2735#2838#0" expanded="false" />
             <element signature="e#4264#4453#0" expanded="false" />
@@ -808,32 +773,26 @@
             <element signature="e#9401#9557#0" expanded="false" />
             <element signature="e#9612#9770#0" expanded="false" />
             <element signature="e#10402#11034#0" expanded="false" />
+            <element signature="e#11172#14192#0" expanded="false" />
             <element signature="e#11199#11302#0" expanded="false" />
-            <element signature="e#11720#11891#0" expanded="false" />
-            <element signature="e#11958#12134#0" expanded="false" />
-            <element signature="e#12203#12388#0" expanded="false" />
-            <element signature="e#12454#12633#0" expanded="false" />
-            <element signature="e#12698#12875#0" expanded="false" />
-            <element signature="e#12939#13114#0" expanded="false" />
-            <element signature="e#13173#13358#0" expanded="false" />
-            <element signature="e#13420#13933#0" expanded="false" />
-            <element signature="e#14043#14695#0" expanded="false" />
-            <element signature="e#17078#17991#0" expanded="false" />
-            <element signature="e#18062#18240#0" expanded="false" />
-            <element signature="e#18308#18433#0" expanded="false" />
-            <element signature="e#18511#18694#0" expanded="false" />
-            <element signature="e#18769#18954#0" expanded="false" />
-            <element signature="e#19035#19224#0" expanded="false" />
-            <element signature="e#19578#19764#0" expanded="false" />
-            <element signature="e#19814#21094#0" expanded="false" />
+            <element signature="e#12223#12408#0" expanded="false" />
+            <element signature="e#12474#12653#0" expanded="false" />
+            <element signature="e#12718#12895#0" expanded="false" />
+            <element signature="e#12959#13134#0" expanded="false" />
+            <element signature="e#13193#13590#0" expanded="false" />
+            <element signature="e#13652#14175#0" expanded="false" />
+            <element signature="e#18385#18563#0" expanded="false" />
+            <element signature="e#19092#19277#0" expanded="false" />
+            <element signature="e#19358#19547#0" expanded="false" />
+            <element signature="e#20136#21416#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/ImperialController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.091561936">
-          <caret line="122" column="84" selection-start-line="0" selection-start-column="0" selection-end-line="1028" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.6875">
+          <caret line="846" column="142" selection-start-line="846" selection-start-column="142" selection-end-line="846" selection-end-column="142" />
           <folding>
             <element signature="n#__construct#0;n#ImperialController#0;n#!!top" expanded="false" />
             <element signature="n#__destruct#0;n#ImperialController#0;n#!!top" expanded="false" />
@@ -842,109 +801,104 @@
             <element signature="e#1448#1590#0#PHP" expanded="false" />
             <element signature="e#2639#2749#0#PHP" expanded="false" />
             <element signature="n#getStanding#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#4158#4235#0#PHP" expanded="false" />
-            <element signature="e#4657#4730#0#PHP" expanded="false" />
+            <element signature="e#4151#4228#0#PHP" expanded="false" />
+            <element signature="e#4650#4723#0#PHP" expanded="false" />
             <element signature="n#editStanding#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#5242#5324#0#PHP" expanded="false" />
+            <element signature="e#5235#5317#0#PHP" expanded="false" />
             <element signature="n#editStandingName#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#5740#5824#0#PHP" expanded="false" />
+            <element signature="e#5733#5817#0#PHP" expanded="false" />
             <element signature="n#editStandingClass#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#6243#6329#0#PHP" expanded="false" />
+            <element signature="e#6236#6322#0#PHP" expanded="false" />
             <element signature="n#editStandingPoints#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#6751#6839#0#PHP" expanded="false" />
+            <element signature="e#6744#6832#0#PHP" expanded="false" />
             <element signature="n#editStandingProfile#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#7264#7350#0#PHP" expanded="false" />
+            <element signature="e#7257#7343#0#PHP" expanded="false" />
             <element signature="n#editStandingRegion#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#8894#8967#0#PHP" expanded="false" />
+            <element signature="e#8887#8960#0#PHP" expanded="false" />
             <element signature="n#editUserInfos#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#9552#9630#0#PHP" expanded="false" />
+            <element signature="e#9545#9623#0#PHP" expanded="false" />
             <element signature="n#editUserMention#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#10001#10081#0#PHP" expanded="false" />
+            <element signature="e#9994#10074#0#PHP" expanded="false" />
             <element signature="n#editUserIntrovid#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#10455#10541#0#PHP" expanded="false" />
+            <element signature="e#10448#10534#0#PHP" expanded="false" />
             <element signature="n#editUserDescription#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#10924#11004#0#PHP" expanded="false" />
+            <element signature="e#10917#10997#0#PHP" expanded="false" />
             <element signature="n#editUserFacebook#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#11378#11456#0#PHP" expanded="false" />
+            <element signature="e#11371#11449#0#PHP" expanded="false" />
             <element signature="n#editUserTwitter#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#11827#11905#0#PHP" expanded="false" />
+            <element signature="e#11820#11898#0#PHP" expanded="false" />
             <element signature="n#editUserYoutube#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#12276#12360#0#PHP" expanded="false" />
+            <element signature="e#12269#12353#0#PHP" expanded="false" />
             <element signature="n#editUserGooglePlus#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#12740#12808#0#PHP" expanded="false" />
+            <element signature="e#12733#12801#0#PHP" expanded="false" />
             <element signature="n#getGuides#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#13724#13807#0#PHP" expanded="false" />
+            <element signature="e#13717#13800#0#PHP" expanded="false" />
             <element signature="n#getGuidesUser#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#14513#14620#0#PHP" expanded="false" />
+            <element signature="e#14506#14613#0#PHP" expanded="false" />
             <element signature="n#getClassGuidesUser#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#15519#15613#0#PHP" expanded="false" />
+            <element signature="e#15512#15606#0#PHP" expanded="false" />
             <element signature="n#getUserGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#16589#16693#0#PHP" expanded="false" />
+            <element signature="e#16582#16686#0#PHP" expanded="false" />
             <element signature="n#getUserGuides#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#17671#17801#0#PHP" expanded="false" />
-            <element signature="e#18683#18757#0#PHP" expanded="false" />
-            <element signature="e#19275#19354#0#PHP" expanded="false" />
+            <element signature="e#17664#17794#0#PHP" expanded="false" />
+            <element signature="e#19268#19347#0#PHP" expanded="false" />
             <element signature="n#deleteGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#19714#19793#0#PHP" expanded="false" />
+            <element signature="e#19707#19786#0#PHP" expanded="false" />
             <element signature="n#editUserGuide#0;n#ImperialController#0;n#!!top" expanded="false" />
             <element signature="n#editUserGuideClass#0;n#ImperialController#0;n#!!top" expanded="false" />
             <element signature="n#editUserGuideTitle#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="n#getTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="n#getOngoingTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="n#getFinishedTournaments#0;n#ImperialController#0;n#!!top" expanded="false" />
-            <element signature="e#27514#27601#0#PHP" expanded="false" />
-            <marker date="1454333469428" expanded="true" signature="811:895" placeholder="SELECT * FRO... users" />
-            <marker date="1454333469428" expanded="true" signature="1811:1874" placeholder="SELECT * FRO... ${$month}" />
-            <marker date="1454333469428" expanded="true" signature="1979:2061" placeholder="SELECT * FRO... ${$month}" />
-            <marker date="1454333469428" expanded="true" signature="2912:2967" placeholder="SELECT * FRO... ${$month}" />
-            <marker date="1454333469428" expanded="true" signature="3765:3915" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-            <marker date="1454333469428" expanded="true" signature="4395:4463" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="4406:4437" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-            <marker date="1454333469428" expanded="true" signature="7980:8144" placeholder="SELECT u.men... users" />
-            <marker date="1454333469428" expanded="true" signature="7980:8153" placeholder="SELECT u.men... users" />
-            <marker date="1454333469428" expanded="true" signature="9104:9248" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="9769:9807" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="10221:10260" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="10684:10726" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="11144:11183" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="11595:11633" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="12044:12082" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="12502:12543" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="12936:13106" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="13939:14057" placeholder="SELECT u.id,... users" />
-            <marker date="1454333469428" expanded="true" signature="13939:14071" placeholder="SELECT u.id,... users" />
-            <marker date="1454333469428" expanded="true" signature="14763:15006" placeholder="SELECT u.id,... users" />
-            <marker date="1454333469428" expanded="true" signature="15747:15822" placeholder="SELECT u.men... users" />
-            <marker date="1454333469428" expanded="true" signature="15747:15932" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="16828:17018" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="18001:18021" placeholder="SELECT g.id,... guides" />
-            <marker date="1454333469428" expanded="true" signature="18001:18193" placeholder="SELECT g.tit... guides" />
-            <marker date="1454333469428" expanded="true" signature="18001:18194" placeholder="SELECT g.tit... guides" />
-            <marker date="1454333469428" expanded="true" signature="18911:19009" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
-            <marker date="1454333469428" expanded="true" signature="19509:19540" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="19930:20010" placeholder="UPDATE users... " />
-            <marker date="1454333469428" expanded="true" signature="20499:20536" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="20958:20995" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="21435:21478" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="21906:21943" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="22368:22406" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="22806:22945" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="22813:22927" placeholder="INSERT INTO tournaments... " />
-            <marker date="1454333469428" expanded="true" signature="23845:23984" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="23845:24005" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="24908:25080" placeholder="SELECT id, s... tournaments" />
-            <marker date="1454333469428" expanded="true" signature="25943:26083" placeholder="INSERT INTO tournaments... " />
-            <marker date="1454333469428" expanded="true" signature="26575:26604" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="26575:26615" placeholder="DELETE FROM " />
-            <marker date="1454333469428" expanded="true" signature="26586:26601" placeholder="INSERT INTO tournaments... " />
-            <marker date="1454333469428" expanded="true" signature="27014:27215" placeholder="UPDATE guide... " />
-            <marker date="1454333469428" expanded="true" signature="27743:27787" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="28207:28252" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="28698:28745" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="29191:29235" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="29675:29718" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="30147:30189" placeholder="UPDATE tourn... " />
-            <marker date="1454333469428" expanded="true" signature="30617:30661" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="811:895" placeholder="SELECT * FRO... users" />
+            <marker date="1454341448199" expanded="true" signature="1811:1874" placeholder="SELECT * FRO... ${$month}" />
+            <marker date="1454341448199" expanded="true" signature="1979:2061" placeholder="SELECT * FRO... ${$month}" />
+            <marker date="1454341448199" expanded="true" signature="2912:2967" placeholder="SELECT * FRO... ${$month}" />
+            <marker date="1454341448199" expanded="true" signature="3765:3908" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+            <marker date="1454341448199" expanded="true" signature="4388:4456" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="4399:4430" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+            <marker date="1454341448199" expanded="true" signature="7973:8137" placeholder="SELECT u.men... users" />
+            <marker date="1454341448199" expanded="true" signature="7973:8146" placeholder="SELECT u.men... users" />
+            <marker date="1454341448199" expanded="true" signature="9097:9241" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="9762:9800" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="10214:10253" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="10677:10719" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="11137:11176" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="11588:11626" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="12037:12075" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="12495:12536" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="12929:13099" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="13932:14050" placeholder="SELECT u.id,... users" />
+            <marker date="1454341448199" expanded="true" signature="13932:14064" placeholder="SELECT u.id,... users" />
+            <marker date="1454341448199" expanded="true" signature="14756:14999" placeholder="SELECT u.id,... users" />
+            <marker date="1454341448199" expanded="true" signature="15740:15815" placeholder="SELECT u.men... users" />
+            <marker date="1454341448199" expanded="true" signature="15740:15925" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="16821:17011" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="17994:18014" placeholder="SELECT g.id,... guides" />
+            <marker date="1454341448199" expanded="true" signature="17994:18186" placeholder="SELECT g.tit... guides" />
+            <marker date="1454341448199" expanded="true" signature="17994:18187" placeholder="SELECT g.tit... guides" />
+            <marker date="1454341448199" expanded="true" signature="18904:19002" placeholder="INSERT INTO ${$data-&gt;month}2016_standings... " />
+            <marker date="1454341448199" expanded="true" signature="19502:19533" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="19923:20003" placeholder="UPDATE users... " />
+            <marker date="1454341448199" expanded="true" signature="20492:20529" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="20951:20988" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="21428:21471" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="21899:21936" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="22361:22399" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="22799:22938" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="22806:22920" placeholder="INSERT INTO tournaments... " />
+            <marker date="1454341448199" expanded="true" signature="23838:23977" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="23838:23998" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="24901:25073" placeholder="SELECT id, s... tournaments" />
+            <marker date="1454341448199" expanded="true" signature="25993:26160" placeholder="INSERT INTO guides... " />
+            <marker date="1454341448199" expanded="true" signature="26673:26702" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="26673:26713" placeholder="DELETE FROM " />
+            <marker date="1454341448199" expanded="true" signature="26684:26699" placeholder="INSERT INTO tournaments... " />
+            <marker date="1454341448199" expanded="true" signature="27112:27314" placeholder="UPDATE guide... " />
+            <marker date="1454341448199" expanded="true" signature="27842:27887" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="28307:28353" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="28799:28847" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="29293:29338" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="29778:29822" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="30251:30294" placeholder="UPDATE tourn... " />
+            <marker date="1454341448199" expanded="true" signature="30722:30767" placeholder="UPDATE tourn... " />
           </folding>
         </state>
       </provider>

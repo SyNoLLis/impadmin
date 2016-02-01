@@ -120,8 +120,8 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("INSERT INTO ".$data->month."2016_standings(id, name, class, points, profile, region)
-                                            VALUES ('',?,?,?,?,?)");
+            $stmt = self::$conn->prepare("INSERT INTO ".$data->month."2016_standings(name, class, points, profile, region)
+                                            VALUES (?,?,?,?,?)");
             $stmt->bind_param("ssdss", $data->name, $data->class, $data->points, $data->profile, $data->region);
             $stmt->execute();
         }
@@ -821,9 +821,9 @@ class ImperialController
             if ($stmt->num_rows == 0) {
                 return http_response_code(404);
             }
-            $stmt->bind_result($id, $startDate, $description, $brackets, $players, $region, $finished);
+            $stmt->bind_result($id, $name, $startDate, $description, $brackets, $players, $region, $finished);
             while($stmt->fetch()) {
-                $myArray[] = array('id' => $id, 'startDate' => $startDate, 'description' => $description,
+                $myArray[] = array('id' => $id, 'name' =>$name, 'startDate' => $startDate, 'description' => $description,
                     'brackets' => $brackets, 'region' => $region, 'players' => $players, 'finished' => $finished);
             }
         }
@@ -835,16 +835,18 @@ class ImperialController
     /**
      * Add a new tournament
      *
-     * @url POST /tournaments/add
+     * @url POST /tournament/add
      */
     public function addTournament($data)
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("INSERT INTO tournaments t(id, t.name, startDate, description, brackets, players, region, finished)
-                  VALUES ('',?,?,?,?,?,0)");
-            $stmt->bind_param("ssssss", $data->name, $data->startData, $data->description, $data->brackets, $data->players, $data->region);
-            $stmt->execute();
+            if (self::$conn) {
+                $stmt = self::$conn->prepare("INSERT INTO tournaments (id, name, startDate, description, brackets, players, region, finished)
+                                              VALUES ('',?,?,?,?,?,?,0)");
+                $stmt->bind_param("ssssss", $data->name, $data->starDate, $data->description, $data->brackets, $data->players, $data->region);
+                $stmt->execute();
+            }
         }
         $stmt->close();
         self::$conn->close();
@@ -878,7 +880,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament t
+            $stmt = self::$conn->prepare("UPDATE tournaments t
                                           SET t.name=?, startDate=?, description=?, brackets=?, players=?, region=?, finished=?
                                           WHERE id =?");
             $stmt->bind_param("ssssssdd", $data->name, $data->startDate, $data->description,
@@ -899,7 +901,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament t SET t.name=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments t SET t.name=? WHERE id =?");
             $stmt->bind_param("sd", $data->name, $data->id);
             $stmt->execute();
         }
@@ -917,7 +919,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament SET startDate=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments SET startDate=? WHERE id =?");
             $stmt->bind_param("sd", $data->startDate, $data->id);
             $stmt->execute();
         }
@@ -935,7 +937,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament SET description=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments SET description=? WHERE id =?");
             $stmt->bind_param("sd", $data->description, $data->id);
             $stmt->execute();
         }
@@ -953,7 +955,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament SET brackets=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments SET brackets=? WHERE id =?");
             $stmt->bind_param("sd", $data->brackets, $data->id);
             $stmt->execute();
         }
@@ -971,7 +973,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament SET players=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments SET players=? WHERE id =?");
             $stmt->bind_param("sd", $data->players, $data->id);
             $stmt->execute();
         }
@@ -989,7 +991,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament SET region=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments SET region=? WHERE id =?");
             $stmt->bind_param("sd", $data->region, $data->id);
             $stmt->execute();
         }
@@ -1007,7 +1009,7 @@ class ImperialController
     {
         $stmt = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("UPDATE tournament SET finished=? WHERE id =?");
+            $stmt = self::$conn->prepare("UPDATE tournaments SET finished=? WHERE id =?");
             $stmt->bind_param("dd", $data->finished, $data->id);
             $stmt->execute();
         }
