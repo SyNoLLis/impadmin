@@ -26,10 +26,15 @@ impApplication
             .state('nav.guides', {
                 url: '/guides',
                 templateUrl: 'views/userGuides.html'
+            })
+            .state('nav.tournaments', {
+                url: '/tournaments',
+                templateUrl: 'views/tournaments.html'
             });
     })
     .constant("config", {
         "baseUrl": "http://localhost/impadmin/api"
+        //"baseUrl": "http://impbns.com/admin/api"
     });
 
 impApplication.run(function(editableOptions) {
@@ -150,7 +155,6 @@ impApplication.controller("AddStandingController",
         };
     });
 
-
 impApplication.controller("UserInfosController",
     function($scope, $rootScope, $http, config) {
         var url = config.baseUrl+"/userInfo/"+$rootScope.user.id;
@@ -193,7 +197,6 @@ impApplication.controller("UserInfosController",
             $http.post(url, info);
         };
     });
-
 
 impApplication.controller("UserGuidesController",
     function ($scope, $rootScope, $http, config, $window) {
@@ -247,7 +250,6 @@ impApplication.controller("UserGuidesController",
         };
     });
 
-
 impApplication.controller("AddUserGuideController",
     function ($scope, $modal, $log) {
         $scope.showForm = function () {
@@ -258,6 +260,90 @@ impApplication.controller("AddUserGuideController",
                 resolve: {
                     guideForm: function () {
                         return $scope.guideForm;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+    });
+
+impApplication.controller("TournamentsController",
+    function ($scope, $rootScope, $http, config, $window, deleteTournamentFactory) {
+        $scope.regions = [
+            {value: 'na', text: 'North America'},
+            {value: 'eu', text: 'Europe'}
+        ];
+        $scope.handleTournamentsBtnClick = function (status) {
+            $scope.status = status.status;
+            var url = config.baseUrl + "/tournaments/" + $scope.status;
+            $http.get(url).then(function (data) {
+                $rootScope.tournaments = data.data;
+            });
+        };
+
+        if($rootScope.user.status == 'admin') {
+            $scope.editTournamentName = function (data, id) {
+                var info = {name: data, id: id};
+                var url = config.baseUrl + "/tournament/edit/name";
+                $http.post(url, info);
+            };
+            $scope.editTournamentStartDate = function (data, id) {
+                var info = {startDate: data, id: id};
+                var url = config.baseUrl + "/tournament/edit/date";
+                $http.post(url, info);
+            };
+            $scope.editTournamentDescription = function (data, id) {
+                var info = {description: data, id: id};
+                var url = config.baseUrl + "/tournament/edit/description";
+                $http.post(url, info);
+            };
+            $scope.editTournamentBrackets = function (data, id) {
+                var info = {brackets: data, id: id};
+                var url = config.baseUrl + "/tournament/edit/brackets";
+                $http.post(url, info);
+            };
+            $scope.editTournamentPlayers = function (data, id) {
+                var info = {players: data, id: id};
+                var url = config.baseUrl + "/tournament/edit/players";
+                $http.post(url, info);
+            };
+            $scope.editTournamentRegion = function (data, id) {
+                var info = {region: data, id: id};
+                var url = config.baseUrl + "/tournament/edit/region";
+                $http.post(url, info);
+            };
+            $scope.endTournament = function (tournament) {
+                var info = {finished: 1, id: tournament.id};
+                var url = config.baseUrl + "/tournament/edit/status";
+                $http.post(url, info);
+            };
+            $scope.deleteTournament = function (tournament) {
+                var info = {id: tournament.id};
+                if ($window.confirm("Do you really want to delete "+tournament.name +" \n Please note that this action is not reversible !") == true) {
+                    deleteTournamentFactory.delete(info);
+                    var url = config.baseUrl + "/tournaments/" + $scope.status;
+                    $http.get(url).then(function (data) {
+                        $rootScope.tournaments = data.data;
+                    });
+                }
+            };
+        }
+    });
+
+impApplication.controller("AddTournamentController",
+    function ($scope, $modal, $log) {
+        $scope.showForm = function () {
+            var modalInstance = $modal.open({
+                templateUrl: 'views/createTournament.html',
+                controller: ModalTournamentCtrl,
+                scope: $scope,
+                resolve: {
+                    tournamentForm: function () {
+                        return $scope.tournamentForm;
                     }
                 }
             });
@@ -280,7 +366,7 @@ var ModalGuideCtrl = function ($scope, $rootScope, $http, $modalInstance, guideF
             iframe: guide.iframe,
             userId: $rootScope.user.id
         };
-console.log(newGuide);
+        console.log(newGuide);
         addGuideFactory.add(newGuide)
             .success(function (data) {
                 if (data == "") { //will return nothing if success
@@ -304,7 +390,6 @@ console.log(newGuide);
     };
 };
 
-
 var ModalInstanceCtrl = function ($scope, $rootScope, $modalInstance, standingForm, addStandingFactory, standingsFactory, config) {
     $scope.form = {};
     $scope.submitForm = function (standing) {
@@ -319,9 +404,9 @@ var ModalInstanceCtrl = function ($scope, $rootScope, $modalInstance, standingFo
 
         addStandingFactory.add(newStanding)
             .success(function (data) {
-                if (data == "") { //will return nothing if success
+                if (data == true) { //will return true if success
                     $modalInstance.close('closed');
-                    var url = config.baseUrl + "/standings/"+standing.month+"/"+standing.region;
+                    var url = config.baseUrl + "/standings/"+newStanding.month+"/"+newStanding.region;
                     standingsFactory.standings(url)
                         .success(function (data) {
                             $rootScope.rankings = data;
@@ -332,6 +417,36 @@ var ModalInstanceCtrl = function ($scope, $rootScope, $modalInstance, standingFo
                 console.log(data);
             });
 
+    };
+
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};
+
+var ModalTournamentCtrl = function ($scope, $rootScope, $http, $modalInstance, tournamentForm, config, addTournamentFactory) {
+    $scope.form = {};
+    $scope.submitForm = function (tournament) {
+        var newTournament = {
+            startDate: tournament.startDate,
+            description: tournament.description,
+            brackets: tournament.brackets,
+            players: tournament.players
+        };
+        addTournamentFactory.add(newTournament)
+            .success(function (data) {
+                if (data == "") { //will return nothing if success
+                    $modalInstance.close('closed');
+                    var url = config.baseUrl+"/tournaments";
+                    $http.get(url).then(function (data) {
+                        $rootScope.tournaments = data.data;
+                    });
+                }
+            })
+            .error(function (data) {
+                console.log(data);
+            });
     };
 
 
@@ -389,6 +504,25 @@ impApplication.factory('deleteStandingFactory',
         }
     });
 
+impApplication.factory('deleteTournamentFactory',
+    function (config, $http) {
+        var url = config.baseUrl + "/tournament/delete";
+        return {
+            delete: function(params) {
+                return $http.post(url, params)
+            }
+        }
+    });
+
+impApplication.factory('addTournamentFactory',
+    function (config, $http) {
+        var url = config.baseUrl + "/tournaments/add";
+        return {
+            add: function(params) {
+                return $http.post(url, params)
+            }
+        }
+    });
 
 impApplication.directive('modal', function () {
     return {

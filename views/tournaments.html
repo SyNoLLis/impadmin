@@ -1,0 +1,89 @@
+<div class="container" ng-controller="AddTournamentController">
+    <div class="row">
+        <button ng-if="user.status == 'admin'" ng-click="showForm()" class="btn btn-default">Add a new tournament</button>
+    </div>
+</div>
+
+<div ng-controller="TournamentsController">
+    <div class="container">
+        <div class="row">
+            <form class="span4">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" ng-model="status.status">
+                        <option value="ongoing">Ongoing</option>
+                        <option value="finished">Finished</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-default loginBtn"
+                       ng-click="handleTournamentsBtnClick(status)" value="Show">
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>Tournament ID</th>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>Description</th>
+                <th>Brackets</th>
+                <th>Players</th>
+                <th>Region</th>
+                <th ng-if="user.status == 'admin'">Status</th>
+                <th ng-if="user.status == 'admin'">Delete</th>
+            </tr>
+            </thead>
+
+            <tbody ng-repeat="tournament in tournaments">
+            <tr>
+                <td>
+                    <span>{{tournament.id}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{tournament.name}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="tournament.name"
+                          onbeforesave="editTournamentName($data, tournament.id)">{{tournament.name || 'edit me please'}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{tournament.startDate}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="tournament.startDate"
+                          onbeforesave="editTournamentStartDate($data, tournament.id)">{{tournament.startDate || 'edit me please'}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{tournament.description}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="tournament.description"
+                          onbeforesave="editTournamentDescription($data, tournament.id)">{{tournament.description || 'edit me please'}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{tournament.brackets}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="tournament.brackets"
+                          onbeforesave="editTournamentBrackets($data, tournament.id)">{{tournament.brackets || 'edit me please'}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{tournament.players}}</span>
+                    <span ng-if="user.status == 'admin'" editable-text="tournament.players"
+                          onbeforesave="editTournamentPlayers($data, tournament.id)">{{tournament.players || 'edit me please'}}</span>
+                </td>
+                <td>
+                    <span ng-if="user.status == 'player'">{{tournament.region}}</span>
+                    <span ng-if="user.status == 'admin'" editable-select="tournament.region"
+                          e-ng-options="r.value as r.text for r in regions"
+                          onbeforesave="editTournamentRegion($data, tournament.id)">{{tournament.region || 'edit me please'}}</span>
+                </td>
+                <td>
+                    <button ng-if="user.status == 'admin'" ng-click="endTournament(tournament)"
+                            class="btn btn-primary">End tournament</button>
+                </td>
+                <td>
+                    <button ng-if="user.status == 'admin'" ng-click="deleteTournament(tournament)"
+                            class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

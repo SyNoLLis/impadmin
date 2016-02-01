@@ -119,15 +119,15 @@ class ImperialController
     public function addStanding($data)
     {
         $stmt = "";
-        $result = "";
         if (self::$conn) {
-            $stmt = self::$conn->prepare("INSERT INTO ".$data->month."2016_standings (id, name, class, points, profile, region) VALUES ('',?,?,?,?,?)");
+            $stmt = self::$conn->prepare("INSERT INTO ".$data->month."2016_standings(id, name, class, points, profile, region)
+                                            VALUES ('',?,?,?,?,?)");
             $stmt->bind_param("ssdss", $data->name, $data->class, $data->points, $data->profile, $data->region);
             $stmt->execute();
         }
         $stmt->close();
         self::$conn->close();
-        return $result;
+        return true;
     }
 
     /**
@@ -750,6 +750,272 @@ class ImperialController
         self::$conn->close();
         return true;
     }
+
+    /**
+     * Get all tournaments
+     *
+     * @url GET /tournaments
+     */
+    public function getTournaments()
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT id, t.name, startDate, description, brackets, players, region, finished
+                                          FROM tournaments t");
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $name, $startDate, $description, $brackets, $players, $region, $finished);
+            while($stmt->fetch()) {
+                $myArray[] = array('id' => $id, 'name' => $name, 'startDate' => $startDate, 'description' => $description,
+                    'brackets' => $brackets, 'region' => $region, 'players' => $players, 'finished' => $finished);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
+     * Get all ongoing tournaments
+     *
+     * @url GET /tournaments/ongoing
+     */
+    public function getOngoingTournaments()
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT id, t.name, startDate, description, brackets, players, region, finished
+                                          FROM tournaments t WHERE t.finished = 0");
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $name, $startDate, $description, $brackets, $players, $region, $finished);
+            while($stmt->fetch()) {
+                $myArray[] = array('id' => $id, 'name' => $name, 'startDate' => $startDate, 'description' => $description,
+                    'brackets' => $brackets, 'region' => $region, 'players' => $players, 'finished' => $finished);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
+     * Get all finished tournaments
+     *
+     * @url GET /tournaments/finished
+     */
+    public function getFinishedTournaments()
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("SELECT id, t.name, t.startDate, t.description, t.brackets, t.players, t.region, t.finished
+                                          FROM tournaments t WHERE t.finished = 1");
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) {
+                return http_response_code(404);
+            }
+            $stmt->bind_result($id, $startDate, $description, $brackets, $players, $region, $finished);
+            while($stmt->fetch()) {
+                $myArray[] = array('id' => $id, 'startDate' => $startDate, 'description' => $description,
+                    'brackets' => $brackets, 'region' => $region, 'players' => $players, 'finished' => $finished);
+            }
+        }
+        $stmt->close();
+        self::$conn->close();
+        return $myArray;
+    }
+
+    /**
+     * Add a new tournament
+     *
+     * @url POST /tournaments/add
+     */
+    public function addTournament($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("INSERT INTO tournaments t(id, t.name, startDate, description, brackets, players, region, finished)
+                  VALUES ('',?,?,?,?,?,0)");
+            $stmt->bind_param("ssssss", $data->name, $data->startData, $data->description, $data->brackets, $data->players, $data->region);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Delete a tournament
+     *
+     * @url POST /tournaments/delete
+     */
+    public function deleteTournament($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("DELETE FROM tournaments t WHERE t.id = ?");
+            $stmt->bind_param("d", $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit all tournament info
+     *
+     * @url POST /tournament/edit
+     */
+    public function editTournament($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament t
+                                          SET t.name=?, startDate=?, description=?, brackets=?, players=?, region=?, finished=?
+                                          WHERE id =?");
+            $stmt->bind_param("ssssssdd", $data->name, $data->startDate, $data->description,
+                $data->brackets, $data->players, $data->region, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament name
+     *
+     * @url POST /tournament/edit/name
+     */
+    public function editTournamentName($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament t SET t.name=? WHERE id =?");
+            $stmt->bind_param("sd", $data->name, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament date
+     *
+     * @url POST /tournament/edit/date
+     */
+    public function editTournamentDate($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament SET startDate=? WHERE id =?");
+            $stmt->bind_param("sd", $data->startDate, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament description
+     *
+     * @url POST /tournament/edit/description
+     */
+    public function editTournamentDescription($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament SET description=? WHERE id =?");
+            $stmt->bind_param("sd", $data->description, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament brackets iframe
+     *
+     * @url POST /tournament/edit/brackets
+     */
+    public function editTournamentBrackets($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament SET brackets=? WHERE id =?");
+            $stmt->bind_param("sd", $data->brackets, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament players iframe
+     *
+     * @url POST /tournament/edit/players
+     */
+    public function editTournamentPlayers($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament SET players=? WHERE id =?");
+            $stmt->bind_param("sd", $data->players, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament region
+     *
+     * @url POST /tournament/edit/region
+     */
+    public function editTournamentRegion($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament SET region=? WHERE id =?");
+            $stmt->bind_param("sd", $data->region, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
+    /**
+     * Edit a tournament status
+     *
+     * @url POST /tournament/edit/status
+     */
+    public function editTournamentStatus($data)
+    {
+        $stmt = "";
+        if (self::$conn) {
+            $stmt = self::$conn->prepare("UPDATE tournament SET finished=? WHERE id =?");
+            $stmt->bind_param("dd", $data->finished, $data->id);
+            $stmt->execute();
+        }
+        $stmt->close();
+        self::$conn->close();
+        return true;
+    }
+
 
 
     /**

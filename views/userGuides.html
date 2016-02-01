@@ -42,7 +42,7 @@
                     </span>
                 </td>
                 <td>
-                    <span editable-textarea="guide.description" onbeforesave="editGuideDescription($data, guide.id)">
+                    <span style="max-width: 250px;" editable-textarea="guide.description" onbeforesave="editGuideDescription($data, guide.id)">
                         <pre>{{guide.description || 'no description'}}</pre>
                     </span>
                 </td>
@@ -51,7 +51,7 @@
                         <pre>{{guide.video || 'no description'}}</pre>
                     </span>
                 </td>
-                <td>
+                <td style="max-width: 250px">
                     <span editable-textarea="guide.iframe" onbeforesave="editGuideIframe($data, guide.id)">
                         <pre>{{guide.iframe || 'no description'}}</pre>
                     </span>
